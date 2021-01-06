@@ -1,4 +1,6 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+"""Wrapper to change the behaviour of an existing multitask environment."""
+
 from typing import List, Optional
 
 from numpy.random import RandomState
@@ -15,11 +17,12 @@ from mtenv.utils.types import (
 
 
 class MultiTask(MTEnv):
-    """
-    A wrapper class that wraps over a multi-task environment.
-    """
-
     def __init__(self, env: MTEnv):
+        """Wrapper to change the behaviour of an existing multitask environment
+
+        Args:
+            env (MTEnv): Multitask environment to wrap over.
+        """
         self.env = env
         self.observation_space = self.env.observation_space
         self.action_space = self.env.action_space
