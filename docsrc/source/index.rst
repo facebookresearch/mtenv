@@ -21,6 +21,11 @@ MTEnv: MultiTask Environments for Reinforcement Learning
 
    pages/readme
 
+.. toctree::
+   :maxdepth: 3
+   :caption: Environments
+
+   pages/envs
 
 .. toctree::
    :maxdepth: 3
