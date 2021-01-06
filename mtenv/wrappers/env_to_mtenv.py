@@ -5,7 +5,7 @@ from typing import Any, Dict, List, Optional
 from gym.core import Env
 from gym.spaces.space import Space
 
-from mtenv.core import MTEnv
+from mtenv import MTEnv
 from mtenv.utils import seeding
 from mtenv.utils.types import (
     ActionType,

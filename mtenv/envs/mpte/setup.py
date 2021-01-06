@@ -9,8 +9,7 @@ env_name = "mpte"
 path = Path(__file__).parent / "requirements.txt"
 requirements = parse_dependency(path)
 
-
-with open("README.md", "r") as fh:
+with (Path(__file__).parent / "README.md").open() as fh:
     long_description = fh.read()
 
 setuptools.setup(

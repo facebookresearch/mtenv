@@ -1,5 +1,5 @@
-# I dont remember where did I borrow this code from
-
+# Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+"""Wrapper to stack observations for single task environments."""
 
 from collections import deque
 
@@ -13,6 +13,12 @@ class FrameStack(gym.Wrapper):  # type: ignore[misc]
     # Mypy error: Class cannot subclass 'Wrapper' (has type 'Any')  [misc]
 
     def __init__(self, env: gym.core.Env, k: int):
+        """Wrapper to stack observations for single task environments.
+
+        Args:
+            env (gym.core.Env): Single Task Environment
+            k (int): number of frames to stack.
+        """
         gym.Wrapper.__init__(self, env)
         self._k = k
         self._frames: deque = deque([], maxlen=k)

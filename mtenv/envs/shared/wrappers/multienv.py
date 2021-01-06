@@ -1,4 +1,7 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+"""Wrapper to (lazily) construct a multitask environment from a list of
+    constructors (list of functions to construct the environments)."""
+
 from typing import Callable, List, Optional
 
 from gym.core import Env
@@ -19,6 +22,22 @@ class MultiEnvWrapper(MTEnv):
         funcs_to_make_envs: List[EnvBuilderType],
         initial_task_state: TaskStateType,
     ) -> None:
+        """Wrapper to (lazily) construct a multitask environment from a
+        list of constructors (list of functions to construct the
+        environments).
+
+        The wrapper enables activating/slecting any environment (from the
+        list of environments that can be created) and that environment is
+        treated as the current task. The environments are created lazily.
+
+        Note that this wrapper is experimental and may change in the future.
+
+        Args:
+            funcs_to_make_envs (List[EnvBuilderType]): list of constructor
+                functions to make the environments.
+            initial_task_state (TaskStateType): intial task/environment
+                to select.
+        """
         self._num_tasks = len(funcs_to_make_envs)
         self._funcs_to_make_envs = funcs_to_make_envs
         self._envs = [None for _ in range(self._num_tasks)]
@@ -31,7 +50,7 @@ class MultiEnvWrapper(MTEnv):
         )
         self.task_obs: TaskObsType = initial_task_state
 
-    def make_observation(self, env_obs: EnvObsType) -> ObsType:
+    def _make_observation(self, env_obs: EnvObsType) -> ObsType:
         return {
             "env_obs": env_obs,
             "task_obs": self.task_obs,
@@ -39,7 +58,7 @@ class MultiEnvWrapper(MTEnv):
 
     def step(self, action: ActionType) -> StepReturnType:
         env_obs, reward, done, info = self.env.step(action)
-        return self.make_observation(env_obs=env_obs), reward, done, info
+        return self._make_observation(env_obs=env_obs), reward, done, info
 
     def get_task_state(self) -> TaskStateType:
         return self.task_obs
@@ -55,11 +74,10 @@ class MultiEnvWrapper(MTEnv):
         pass
 
     def assert_task_seed_is_set(self) -> None:
-        """Check that the task seed is set."""
         assert self.np_random_task is not None, "please call `seed_task()` first"
 
     def reset(self) -> ObsType:
-        return self.make_observation(env_obs=self.env.reset())
+        return self._make_observation(env_obs=self.env.reset())
 
     def sample_task_state(self) -> TaskStateType:
         self.assert_task_seed_is_set()
@@ -70,11 +88,9 @@ class MultiEnvWrapper(MTEnv):
         return task_state
 
     def reset_task_state(self) -> None:
-        """Sample a new task_state and set that as the new task_state"""
         self.set_task_state(task_state=self.sample_task_state())
 
     def seed(self, seed: Optional[int] = None) -> List[int]:
-        """Set the seed for environment observations"""
         self.np_random_env, seed = seeding.np_random(seed)
         env_seeds = self.env.seed(seed)
         if isinstance(env_seeds, list):

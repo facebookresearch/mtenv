@@ -5,7 +5,7 @@ from typing import List, Optional
 
 from numpy.random import RandomState
 
-from mtenv.core import MTEnv
+from mtenv import MTEnv
 from mtenv.utils import seeding
 from mtenv.utils.types import (
     ActionType,

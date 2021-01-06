@@ -2,7 +2,7 @@
 import numpy as np
 from gym import spaces
 
-from mtenv.core import MTEnv
+from mtenv import MTEnv
 from mtenv.utils.types import ActionType, ObsType, StepReturnType, TaskStateType
 
 

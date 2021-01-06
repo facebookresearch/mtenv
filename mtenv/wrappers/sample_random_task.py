@@ -1,7 +1,7 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 """Wrapper that samples a new task everytime the environment is reset."""
 
-from mtenv.core import MTEnv
+from mtenv import MTEnv
 from mtenv.utils.types import ObsType
 from mtenv.wrappers.multitask import MultiTask
 

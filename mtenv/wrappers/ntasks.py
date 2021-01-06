@@ -3,7 +3,7 @@
 
 from typing import List
 
-from mtenv.core import MTEnv
+from mtenv import MTEnv
 from mtenv.utils.types import TaskStateType
 from mtenv.wrappers.multitask import MultiTask
 

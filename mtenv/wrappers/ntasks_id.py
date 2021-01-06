@@ -5,7 +5,7 @@ and return the id of the task as part of the observation."""
 from gym.spaces import Dict as DictSpace
 from gym.spaces import Discrete
 
-from mtenv.core import MTEnv
+from mtenv import MTEnv
 from mtenv.utils.types import ActionType, ObsType, StepReturnType, TaskStateType
 from mtenv.wrappers.ntasks import NTasks
 
