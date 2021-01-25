@@ -132,15 +132,6 @@ Follow these instructions to setup MTEnv locally:
   * ``flake8``
   * ``mypy``
 
-Community
----------
-
-Ask questions in the chat or github issues:
-
-
-* `Chat <https://mtenv.zulipchat.com>`_
-* `Issues <https://https://github.com/facebookresearch/mtenv/issues>`_
-
 Glossary
 --------
 
