@@ -46,10 +46,10 @@ class EnvToMTEnv(MTEnv):
         return cls.__name__
 
     def _make_observation(self, env_obs: EnvObsType) -> ObsType:
-        return {"env_obs": env_obs, "task_obs": self.task_obs}
+        return {"env_obs": env_obs, "task_obs": self.get_task_obs()}
 
     def get_task_obs(self) -> TaskObsType:
-        return self.task_obs
+        return self._task_obs
 
     def get_task_state(self) -> TaskStateType:
         raise NotImplementedError

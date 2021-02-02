@@ -31,7 +31,7 @@ class StickyObservation(gym.Wrapper):
                 f"sticky_probability = {sticky_probability} is not in the interval [0, 1]."
             )
         self._last_k = last_k + 1
-        self._observations = deque([], maxlen=self._last_k)
+        self._observations: deque = deque([], maxlen=self._last_k)
         self.observation_space = env.observation_space
         self._max_episode_steps = env._max_episode_steps
 
