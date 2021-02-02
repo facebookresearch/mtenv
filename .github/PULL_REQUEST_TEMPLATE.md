@@ -4,7 +4,7 @@ Thank you for contributing to MTEnv.
 
 What are you proposing? What is the motivation for the change.
 
-### Have you read the [Contributing Guidelines](.github/CONTRIBUTING.md)?
+### Have you read the [Contributing Guidelines](https://github.com/facebookresearch/mtenv/blob/main/.github/CONTRIBUTING.md)?
 
 Yes/No
 
