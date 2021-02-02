@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/fairinternal/mtenv.svg?style=svg&circle-token=61cea522f4b782028e6631198f2ad17d2b93be05)](https://circleci.com/gh/fairinternal/mtenv)
+[![CircleCI](https://circleci.com/gh/facebookresearch/mtenv.svg?style=svg&circle-token=d507c3b95e80c67d6d4daf2d43785df654af36d1)](https://circleci.com/gh/facebookresearch/mtenv)
 ![PyPI - License](https://img.shields.io/pypi/l/mtenv)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mtenv)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -18,7 +18,7 @@ MultiTask Environments for Reinforcement Learning.
 
 4. [Documentation](#Documentation)
 
-5. [Contributing to MTEnv](#Contributing_to_MTEnv)
+5. [Contributing to MTEnv](#Contributing-to-MTEnv)
 
 6. [Community](#Community)
 
@@ -28,13 +28,15 @@ MTEnv is a library to interface with environments for multi-task reinforcement l
 
 * A core API/interface that extends the [gym interface](https://gym.openai.com/) and adds first-class support for multi-task RL.
 
-* A [collection of environments](http://localhost:8000/pages/envs.html) that implement the API.
+* A [collection of environments](https://facebookresearch.github.io/mtenv/pages/envs.html) that implement the API.
 
 Together, these two components should provide a standard interface for multi-task RL environments and make it easier to reuse components and tools across environments.
 
-You can read more about the difference between `MTEnv` and single-task environments [here.](http://localhost:8000/pages/readme.html#multitask-observation)
+You can read more about the difference between `MTEnv` and single-task environments [here.](https://facebookresearch.github.io/mtenv/pages/readme.html#multitask-observation)
 
 ### List of publications & submissions using MTEnv (please create a pull request to add the missing entries):
+
+* [Learning Adaptive Exploration Strategies in Dynamic Environments Through Informed Policy Regularization](https://arxiv.org/abs/2005.02934)
 
 * [Learning Robust State Abstractions for Hidden-Parameter Block MDPs](https://arxiv.org/abs/2007.07206)
 
@@ -65,7 +67,7 @@ The **list of environments**, that implement the API, is available [here](http:/
 
 All the environments can be installed at once using `pip install "mtenv[all]"`. However, note that some environments may have incompatible dependencies.
 
-MTEnv can also be installed from the source by first cloning the repo (`git clone git@github.com:fairinternal/mtenv.git`), *cding* into the directory `cd mtenv`, and then using the pip commands as described above. For example, `pip install mtenv` to install the core API, and `pip install "mtenv[env_name]"` to install a particular environment.
+MTEnv can also be installed from the source by first cloning the repo (`git clone git@github.com:facebookresearch/mtenv.git`), *cding* into the directory `cd mtenv`, and then using the pip commands as described above. For example, `pip install mtenv` to install the core API, and `pip install "mtenv[env_name]"` to install a particular environment.
 
 ## Usage
 
@@ -110,7 +112,7 @@ There are several ways to contribute to MTEnv.
 ### Local Setup
 Follow these instructions to setup MTEnv locally:
 
-* Clone locally - `git clone git@github.com:fairinternal/mtenv.git`.
+* Clone locally - `git clone git@github.com:facebookresearch/mtenv.git`.
 * *cd* into the directory - `cd mtenv`.
 * Install MTEnv in the dev mode - `pip install -e ".[dev]"`
 * Install pre-commit hooks - `pre-commit install`
