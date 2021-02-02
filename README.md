@@ -116,5 +116,8 @@ There are several ways to contribute to MTEnv.
 Ask questions in the chat or github issues:
 * [Chat](https://mtenv.zulipchat.com)
 * [Issues](https://https://github.com/facebookresearch/mtenv/issues)
+
+### Additional Links
+
 * [Terms of Use](https://opensource.facebook.com/legal/terms)
 * [Privacy Policy](https://opensource.facebook.com/legal/privacy)
