@@ -1,0 +1,534 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mtenv package &mdash; mtenv 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="mtenv.envs package" href="mtenv.envs.html" />
+    <link rel="prev" title="mtenv" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> mtenv
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">MTEnv</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Environments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../envs/supported.html">Supported Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../envs/contribute.html">How to add new environments</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">mtenv</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">mtenv package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.html">mtenv.envs package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.utils.html">mtenv.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.wrappers.html">mtenv.wrappers package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-mtenv.core">mtenv.core module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-mtenv">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">mtenv</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">mtenv</a> &raquo;</li>
+        
+      <li>mtenv package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/api/mtenv.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mtenv-package">
+<h1>mtenv package<a class="headerlink" href="#mtenv-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mtenv.envs.html">mtenv.envs package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.envs.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mtenv.envs.control.html">mtenv.envs.control package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.control.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.control.html#mtenv-envs-control-acrobot-module">mtenv.envs.control.acrobot module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.control.html#module-mtenv.envs.control.cartpole">mtenv.envs.control.cartpole module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.control.html#mtenv-envs-control-setup-module">mtenv.envs.control.setup module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.control.html#module-mtenv.envs.control">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mtenv.envs.hipbmdp.html">mtenv.envs.hipbmdp package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.hipbmdp.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.hipbmdp.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.hipbmdp.html#module-mtenv.envs.hipbmdp.dmc_env">mtenv.envs.hipbmdp.dmc_env module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.hipbmdp.html#module-mtenv.envs.hipbmdp.env">mtenv.envs.hipbmdp.env module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.hipbmdp.html#mtenv-envs-hipbmdp-setup-module">mtenv.envs.hipbmdp.setup module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.hipbmdp.html#module-mtenv.envs.hipbmdp">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mtenv.envs.metaworld.html">mtenv.envs.metaworld package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.metaworld.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.metaworld.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.metaworld.html#module-mtenv.envs.metaworld.env">mtenv.envs.metaworld.env module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.metaworld.html#mtenv-envs-metaworld-setup-module">mtenv.envs.metaworld.setup module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.metaworld.html#module-mtenv.envs.metaworld">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mtenv.envs.mpte.html">mtenv.envs.mpte package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.mpte.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.mpte.html#mtenv-envs-mpte-setup-module">mtenv.envs.mpte.setup module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.mpte.html#mtenv-envs-mpte-two-goal-maze-env-module">mtenv.envs.mpte.two_goal_maze_env module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.mpte.html#module-mtenv.envs.mpte">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mtenv.envs.shared.html">mtenv.envs.shared package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.shared.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.shared.html#module-mtenv.envs.shared">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mtenv.envs.tabular_mdp.html">mtenv.envs.tabular_mdp package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.tabular_mdp.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.tabular_mdp.html#mtenv-envs-tabular-mdp-setup-module">mtenv.envs.tabular_mdp.setup module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.tabular_mdp.html#mtenv-envs-tabular-mdp-tmdp-module">mtenv.envs.tabular_mdp.tmdp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mtenv.envs.tabular_mdp.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.envs.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.envs.html#module-mtenv.envs.registration">mtenv.envs.registration module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.envs.html#module-mtenv.envs">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mtenv.utils.html">mtenv.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.utils.html#module-mtenv.utils.seeding">mtenv.utils.seeding module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.utils.html#module-mtenv.utils.setup_utils">mtenv.utils.setup_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.utils.html#module-mtenv.utils.types">mtenv.utils.types module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.utils.html#module-mtenv.utils">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mtenv.wrappers.html">mtenv.wrappers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.wrappers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.wrappers.html#module-mtenv.wrappers.env_to_mtenv">mtenv.wrappers.env_to_mtenv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.wrappers.html#module-mtenv.wrappers.multitask">mtenv.wrappers.multitask module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.wrappers.html#module-mtenv.wrappers.ntasks">mtenv.wrappers.ntasks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.wrappers.html#module-mtenv.wrappers.ntasks_id">mtenv.wrappers.ntasks_id module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.wrappers.html#module-mtenv.wrappers.sample_random_task">mtenv.wrappers.sample_random_task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtenv.wrappers.html#module-mtenv.wrappers">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mtenv.core">
+<span id="mtenv-core-module"></span><h2>mtenv.core module<a class="headerlink" href="#module-mtenv.core" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="mtenv.core.MTEnv">
+<em class="property">class </em><code class="sig-prename descclassname">mtenv.core.</code><code class="sig-name descname">MTEnv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">action_space</span><span class="p">:</span> <span class="n">gym.spaces.space.Space</span></em>, <em class="sig-param"><span class="n">env_observation_space</span><span class="p">:</span> <span class="n">gym.spaces.space.Space</span></em>, <em class="sig-param"><span class="n">task_observation_space</span><span class="p">:</span> <span class="n">gym.spaces.space.Space</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.core.MTEnv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gym.core.Env</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="simple">
+<dt>This abstract base class extends the OpenAI Gym class with</dt><dd><p>task information and is the main class for interacting with mult-task environments.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>action_space</strong> (<em>Space</em>) – [description]</p></li>
+<li><p><strong>env_observation_space</strong> (<em>Space</em>) – [description]</p></li>
+<li><p><strong>task_observation_space</strong> (<em>Space</em>) – [description]</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="mtenv.core.MTEnv.assert_env_seed_is_set">
+<code class="sig-name descname">assert_env_seed_is_set</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.assert_env_seed_is_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.core.MTEnv.assert_env_seed_is_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that the env seed is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.core.MTEnv.assert_task_seed_is_set">
+<code class="sig-name descname">assert_task_seed_is_set</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.assert_task_seed_is_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.core.MTEnv.assert_task_seed_is_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that the task seed is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.core.MTEnv.get_task_obs">
+<code class="sig-name descname">get_task_obs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>str<span class="p">, </span>int<span class="p">, </span>float<span class="p">, </span>numpy.ndarray<span class="p">]</span><a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.get_task_obs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.core.MTEnv.get_task_obs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current value of <cite>task_obs</cite> attribute. <cite>task_obs</cite> is
+returned as part of every observation as well. This function is useful
+in cases where the user only wants to access the task_obs and does not
+want to execute an action in the environment or reset the environment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.core.MTEnv.get_task_state">
+<em class="property">abstract </em><code class="sig-name descname">get_task_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.get_task_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.core.MTEnv.get_task_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all the information needed to execute the current task again.
+For examples, refer to TBD</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.core.MTEnv.reset">
+<em class="property">abstract </em><code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>str<span class="p">, </span>Union<span class="p">[</span>numpy.ndarray<span class="p">, </span>str<span class="p">, </span>int<span class="p">, </span>float<span class="p">]</span><span class="p">]</span><a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.core.MTEnv.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the environment to a start state and return the observation
+corresponding to that state.</p>
+<p>The subclasses extending this class are recommended to ensure
+that the seed is set (by calling <cite>seed(int)</cite>) before invoking this
+method. It can be done by eg:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`self.assert_env_seed_is_set()`</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.core.MTEnv.reset_task_state">
+<code class="sig-name descname">reset_task_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.reset_task_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.core.MTEnv.reset_task_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a new task_state and set that as the new task_state</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.core.MTEnv.sample_task_state">
+<em class="property">abstract </em><code class="sig-name descname">sample_task_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.sample_task_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.core.MTEnv.sample_task_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a <cite>task_state</cite> that contains all the information needed to revert to any
+other task. For examples, refer to TBD.</p>
+<p>The subclasses extending this class are recommended to ensure
+that the seed is set (by calling <cite>seed(int)</cite>) before invoking this
+method. It can be done by eg:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`self.assert_task_seed_is_set()`</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.core.MTEnv.seed">
+<code class="sig-name descname">seed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seed</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>int<span class="p">]</span><a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.seed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.core.MTEnv.seed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the seed for environment observations</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.core.MTEnv.seed_task">
+<code class="sig-name descname">seed_task</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seed</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>int<span class="p">]</span><a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.seed_task"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.core.MTEnv.seed_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the seed for task information</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.core.MTEnv.set_task_state">
+<em class="property">abstract </em><code class="sig-name descname">set_task_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_state</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.set_task_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.core.MTEnv.set_task_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>task_state contains all the information needed to revert to any
+other task. For examples, refer to TBD</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.core.MTEnv.step">
+<em class="property">abstract </em><code class="sig-name descname">step</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">action</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>int<span class="p">, </span>float<span class="p">, </span>numpy.ndarray<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>Dict<span class="p">[</span>str<span class="p">, </span>Union<span class="p">[</span>numpy.ndarray<span class="p">, </span>str<span class="p">, </span>int<span class="p">, </span>float<span class="p">]</span><span class="p">]</span><span class="p">, </span>float<span class="p">, </span>bool<span class="p">, </span>Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span><span class="p">]</span><a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.core.MTEnv.step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the action in the environment and return a tuple of
+<cite>(observation, reward, done, info)</cite>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mtenv">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mtenv" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="mtenv.MTEnv">
+<em class="property">class </em><code class="sig-prename descclassname">mtenv.</code><code class="sig-name descname">MTEnv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">action_space</span><span class="p">:</span> <span class="n">gym.spaces.space.Space</span></em>, <em class="sig-param"><span class="n">env_observation_space</span><span class="p">:</span> <span class="n">gym.spaces.space.Space</span></em>, <em class="sig-param"><span class="n">task_observation_space</span><span class="p">:</span> <span class="n">gym.spaces.space.Space</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.MTEnv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gym.core.Env</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="simple">
+<dt>This abstract base class extends the OpenAI Gym class with</dt><dd><p>task information and is the main class for interacting with mult-task environments.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>action_space</strong> (<em>Space</em>) – [description]</p></li>
+<li><p><strong>env_observation_space</strong> (<em>Space</em>) – [description]</p></li>
+<li><p><strong>task_observation_space</strong> (<em>Space</em>) – [description]</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="mtenv.MTEnv.assert_env_seed_is_set">
+<code class="sig-name descname">assert_env_seed_is_set</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.assert_env_seed_is_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.MTEnv.assert_env_seed_is_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that the env seed is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.MTEnv.assert_task_seed_is_set">
+<code class="sig-name descname">assert_task_seed_is_set</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.assert_task_seed_is_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.MTEnv.assert_task_seed_is_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that the task seed is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.MTEnv.get_task_obs">
+<code class="sig-name descname">get_task_obs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>str<span class="p">, </span>int<span class="p">, </span>float<span class="p">, </span>numpy.ndarray<span class="p">]</span><a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.get_task_obs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.MTEnv.get_task_obs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current value of <cite>task_obs</cite> attribute. <cite>task_obs</cite> is
+returned as part of every observation as well. This function is useful
+in cases where the user only wants to access the task_obs and does not
+want to execute an action in the environment or reset the environment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.MTEnv.get_task_state">
+<em class="property">abstract </em><code class="sig-name descname">get_task_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.get_task_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.MTEnv.get_task_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all the information needed to execute the current task again.
+For examples, refer to TBD</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.MTEnv.reset">
+<em class="property">abstract </em><code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>str<span class="p">, </span>Union<span class="p">[</span>numpy.ndarray<span class="p">, </span>str<span class="p">, </span>int<span class="p">, </span>float<span class="p">]</span><span class="p">]</span><a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.MTEnv.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the environment to a start state and return the observation
+corresponding to that state.</p>
+<p>The subclasses extending this class are recommended to ensure
+that the seed is set (by calling <cite>seed(int)</cite>) before invoking this
+method. It can be done by eg:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`self.assert_env_seed_is_set()`</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.MTEnv.reset_task_state">
+<code class="sig-name descname">reset_task_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.reset_task_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.MTEnv.reset_task_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a new task_state and set that as the new task_state</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.MTEnv.sample_task_state">
+<em class="property">abstract </em><code class="sig-name descname">sample_task_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.sample_task_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.MTEnv.sample_task_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a <cite>task_state</cite> that contains all the information needed to revert to any
+other task. For examples, refer to TBD.</p>
+<p>The subclasses extending this class are recommended to ensure
+that the seed is set (by calling <cite>seed(int)</cite>) before invoking this
+method. It can be done by eg:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`self.assert_task_seed_is_set()`</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.MTEnv.seed">
+<code class="sig-name descname">seed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seed</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>int<span class="p">]</span><a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.seed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.MTEnv.seed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the seed for environment observations</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.MTEnv.seed_task">
+<code class="sig-name descname">seed_task</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seed</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>int<span class="p">]</span><a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.seed_task"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.MTEnv.seed_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the seed for task information</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.MTEnv.set_task_state">
+<em class="property">abstract </em><code class="sig-name descname">set_task_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_state</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.set_task_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.MTEnv.set_task_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>task_state contains all the information needed to revert to any
+other task. For examples, refer to TBD</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mtenv.MTEnv.step">
+<em class="property">abstract </em><code class="sig-name descname">step</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">action</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>int<span class="p">, </span>float<span class="p">, </span>numpy.ndarray<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>Dict<span class="p">[</span>str<span class="p">, </span>Union<span class="p">[</span>numpy.ndarray<span class="p">, </span>str<span class="p">, </span>int<span class="p">, </span>float<span class="p">]</span><span class="p">]</span><span class="p">, </span>float<span class="p">, </span>bool<span class="p">, </span>Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span><span class="p">]</span><a class="reference internal" href="../../_modules/mtenv/core.html#MTEnv.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.MTEnv.step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the action in the environment and return a tuple of
+<cite>(observation, reward, done, info)</cite>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="mtenv.make">
+<code class="sig-prename descclassname">mtenv.</code><code class="sig-name descname">make</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> &#x2192; gym.core.Env<a class="reference internal" href="../../_modules/mtenv/envs/registration.html#make"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mtenv.make" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mtenv.envs.html" class="btn btn-neutral float-right" title="mtenv.envs package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modules.html" class="btn btn-neutral float-left" title="mtenv" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2021, Facebook AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

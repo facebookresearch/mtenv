@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mtenv.envs.metaworld.wrappers.normalized_env &mdash; mtenv 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/copybutton.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home" alt="Documentation Home"> mtenv
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/readme.html">MTEnv</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Environments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/envs/supported.html">Supported Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/envs/contribute.html">How to add new environments</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/api/modules.html">mtenv</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">mtenv</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mtenv.envs.metaworld.wrappers.normalized_env</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mtenv.envs.metaworld.wrappers.normalized_env</h1><div class="highlight"><pre>
+<span></span><span class="c1"># This code is taken from: https://raw.githubusercontent.com/rlworkgroup/garage/af57bf9c6b10cd733cb0fa9bfe3abd0ba239fd6e/src/garage/envs/normalized_env.py</span>
+<span class="c1">#</span>
+<span class="c1"># &quot;&quot;&quot;&quot;An environment wrapper that normalizes action, observation and reward.&quot;&quot;&quot;</span>
+<span class="c1"># type: ignore</span>
+<span class="kn">import</span> <span class="nn">gym</span>
+<span class="kn">import</span> <span class="nn">gym.spaces</span>
+<span class="kn">import</span> <span class="nn">gym.spaces.utils</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="NormalizedEnvWrapper"><a class="viewcode-back" href="../../../../../pages/api/mtenv.envs.metaworld.wrappers.html#mtenv.envs.metaworld.wrappers.normalized_env.NormalizedEnvWrapper">[docs]</a><span class="k">class</span> <span class="nc">NormalizedEnvWrapper</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;An environment wrapper for normalization.</span>
+
+<span class="sd">    This wrapper normalizes action, and optionally observation and reward.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        env (garage.envs.GarageEnv): An environment instance.</span>
+<span class="sd">        scale_reward (float): Scale of environment reward.</span>
+<span class="sd">        normalize_obs (bool): If True, normalize observation.</span>
+<span class="sd">        normalize_reward (bool): If True, normalize reward. scale_reward is</span>
+<span class="sd">            applied after normalization.</span>
+<span class="sd">        expected_action_scale (float): Assuming action falls in the range of</span>
+<span class="sd">            [-expected_action_scale, expected_action_scale] when normalize it.</span>
+<span class="sd">        flatten_obs (bool): Flatten observation if True.</span>
+<span class="sd">        obs_alpha (float): Update rate of moving average when estimating the</span>
+<span class="sd">            mean and variance of observations.</span>
+<span class="sd">        reward_alpha (float): Update rate of moving average when estimating the</span>
+<span class="sd">            mean and variance of rewards.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">env</span><span class="p">,</span>
+        <span class="n">scale_reward</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">normalize_obs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">normalize_reward</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">expected_action_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">flatten_obs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">obs_alpha</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+        <span class="n">reward_alpha</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scale_reward</span> <span class="o">=</span> <span class="n">scale_reward</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_obs</span> <span class="o">=</span> <span class="n">normalize_obs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_reward</span> <span class="o">=</span> <span class="n">normalize_reward</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_expected_action_scale</span> <span class="o">=</span> <span class="n">expected_action_scale</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_flatten_obs</span> <span class="o">=</span> <span class="n">flatten_obs</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_obs_alpha</span> <span class="o">=</span> <span class="n">obs_alpha</span>
+        <span class="n">flat_obs_dim</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">spaces</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">flatdim</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">observation_space</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_obs_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">flat_obs_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_obs_var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">flat_obs_dim</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reward_alpha</span> <span class="o">=</span> <span class="n">reward_alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reward_mean</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reward_var</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+    <span class="k">def</span> <span class="nf">_update_obs_estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obs</span><span class="p">):</span>
+        <span class="n">flat_obs</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">spaces</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">observation_space</span><span class="p">,</span> <span class="n">obs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_obs_mean</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obs_alpha</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obs_mean</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obs_alpha</span> <span class="o">*</span> <span class="n">flat_obs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_obs_var</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obs_alpha</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obs_var</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obs_alpha</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">flat_obs</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obs_mean</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_update_reward_estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reward</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reward_mean</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reward_alpha</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reward_mean</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reward_alpha</span> <span class="o">*</span> <span class="n">reward</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reward_var</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reward_alpha</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reward_var</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reward_alpha</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span>
+            <span class="n">reward</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reward_mean</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_apply_normalize_obs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute normalized observation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            obs (np.ndarray): Observation.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            np.ndarray: Normalized observation.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_obs_estimate</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+        <span class="n">flat_obs</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">spaces</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">observation_space</span><span class="p">,</span> <span class="n">obs</span><span class="p">)</span>
+        <span class="n">normalized_obs</span> <span class="o">=</span> <span class="p">(</span><span class="n">flat_obs</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obs_mean</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_obs_var</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_flatten_obs</span><span class="p">:</span>
+            <span class="n">normalized_obs</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">spaces</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">unflatten</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">observation_space</span><span class="p">,</span> <span class="n">normalized_obs</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">normalized_obs</span>
+
+    <span class="k">def</span> <span class="nf">_apply_normalize_reward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reward</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute normalized reward.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            reward (float): Reward.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: Normalized reward.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_reward_estimate</span><span class="p">(</span><span class="n">reward</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">reward</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_reward_var</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
+
+<div class="viewcode-block" id="NormalizedEnvWrapper.reset"><a class="viewcode-back" href="../../../../../pages/api/mtenv.envs.metaworld.wrappers.html#mtenv.envs.metaworld.wrappers.normalized_env.NormalizedEnvWrapper.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reset environment.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            **kwargs: Additional parameters for reset.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple:</span>
+<span class="sd">                * observation (np.ndarray): The observation of the environment.</span>
+<span class="sd">                * reward (float): The reward acquired at this time step.</span>
+<span class="sd">                * done (boolean): Whether the environment was completed at this</span>
+<span class="sd">                    time step.</span>
+<span class="sd">                * infos (dict): Environment-dependent additional information.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_obs</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_normalize_obs</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ret</span></div>
+
+<div class="viewcode-block" id="NormalizedEnvWrapper.step"><a class="viewcode-back" href="../../../../../pages/api/mtenv.envs.metaworld.wrappers.html#mtenv.envs.metaworld.wrappers.normalized_env.NormalizedEnvWrapper.step">[docs]</a>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Feed environment with one step of action and get result.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            action (np.ndarray): An action fed to the environment.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple:</span>
+<span class="sd">                * observation (np.ndarray): The observation of the environment.</span>
+<span class="sd">                * reward (float): The reward acquired at this time step.</span>
+<span class="sd">                * done (boolean): Whether the environment was completed at this</span>
+<span class="sd">                    time step.</span>
+<span class="sd">                * infos (dict): Environment-dependent additional information.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="p">,</span> <span class="n">gym</span><span class="o">.</span><span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">):</span>
+            <span class="c1"># rescale the action when the bounds are not inf</span>
+            <span class="n">lb</span><span class="p">,</span> <span class="n">ub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">high</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">lb</span> <span class="o">!=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">ub</span> <span class="o">!=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">):</span>
+                <span class="n">scaled_action</span> <span class="o">=</span> <span class="n">lb</span> <span class="o">+</span> <span class="p">(</span><span class="n">action</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expected_action_scale</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span>
+                    <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">ub</span> <span class="o">-</span> <span class="n">lb</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expected_action_scale</span>
+                <span class="p">)</span>
+                <span class="n">scaled_action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">scaled_action</span><span class="p">,</span> <span class="n">lb</span><span class="p">,</span> <span class="n">ub</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">scaled_action</span> <span class="o">=</span> <span class="n">action</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">scaled_action</span> <span class="o">=</span> <span class="n">action</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">next_obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">scaled_action</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_obs</span><span class="p">:</span>
+            <span class="n">next_obs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_normalize_obs</span><span class="p">(</span><span class="n">next_obs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_reward</span><span class="p">:</span>
+            <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_normalize_reward</span><span class="p">(</span><span class="n">reward</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">next_obs</span><span class="p">,</span> <span class="n">reward</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scale_reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">info</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2021, Facebook AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

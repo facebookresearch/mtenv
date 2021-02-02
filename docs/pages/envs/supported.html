@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Supported Environments &mdash; mtenv 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="How to add new environments" href="contribute.html" />
+    <link rel="prev" title="MTEnv" href="../readme.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> mtenv
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">MTEnv</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Environments</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Supported Environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#control">Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hipbmdp">HiPBMDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#metaworld">MetaWorld</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mpte">MPTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to add new environments</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">mtenv</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">mtenv</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Supported Environments</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/envs/supported.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="supported-environments">
+<h1>Supported Environments<a class="headerlink" href="#supported-environments" title="Permalink to this headline">¶</a></h1>
+<p>The following environments are supported:</p>
+<div class="section" id="control">
+<h2>Control<a class="headerlink" href="#control" title="Permalink to this headline">¶</a></h2>
+<p><strong>Installation</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install <span class="s2">&quot;mtenv[control]&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hipbmdp">
+<h2>HiPBMDP<a class="headerlink" href="#hipbmdp" title="Permalink to this headline">¶</a></h2>
+<p><span id="id1">[<a class="reference internal" href="#id7"><span>ZSKP20</span></a>]</span> create a family of MDPs using the
+existing environment-task pairs from DeepMind Control Suite <span id="id2">[<a class="reference internal" href="#id8"><span>TTM+20</span></a>]</span>
+and change one environment parameter to sample different MDPs. For more details,
+refer <span id="id3">[<a class="reference internal" href="#id7"><span>ZSKP20</span></a>]</span>.</p>
+<p><strong>Installation</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install <span class="s2">&quot;mtenv[hipbmdp]&quot;</span>
+</pre></div>
+</div>
+<p><strong>Usage</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mtenv</span> <span class="kn">import</span> <span class="n">make</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="s2">&quot;MT-HiPBMDP-Finger-Spin-vary-size-v0&quot;</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="metaworld">
+<h2>MetaWorld<a class="headerlink" href="#metaworld" title="Permalink to this headline">¶</a></h2>
+<p><span id="id4">[<a class="reference internal" href="#id9"><span>YQH+20</span></a>]</span> proposed an open-source simulated benchmark for
+meta-reinforcement learning and multi-task learning consisting of 50 distinct
+robotic manipulation tasks. For more details, refer <span id="id5">[<a class="reference internal" href="#id9"><span>YQH+20</span></a>]</span>.
+MTEnv provides a wrapper for the multi-task learning environments.</p>
+<p><strong>Installation</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install <span class="s2">&quot;mtenv[metaworld]&quot;</span>
+</pre></div>
+</div>
+<p><strong>Usage</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mtenv</span> <span class="kn">import</span> <span class="n">make</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="s2">&quot;MT-MetaWorld-MT10-v0&quot;</span><span class="p">)</span> <span class="c1"># or MT-MetaWorld-MT50-v0 or MT-MetaWorld-MT1-v0</span>
+<span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mpte">
+<h2>MPTE<a class="headerlink" href="#mpte" title="Permalink to this headline">¶</a></h2>
+<p><strong>Installation</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install <span class="s2">&quot;mtenv[mpte]&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id6"><dl class="citation">
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id2">TTM+20</a></span></dt>
+<dd><p>Yuval Tassa, Saran Tunyasuvunakool, Alistair Muldal, Yotam Doron, Siqi Liu, Steven Bohez, Josh Merel, Tom Erez, Timothy Lillicrap, and Nicolas Heess. Dm_control: software and tasks for continuous control. 2020. <a class="reference external" href="https://arxiv.org/abs/2006.12983">arXiv:2006.12983</a>.</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets">YQH+20</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id5">2</a>)</span></dt>
+<dd><p>Tianhe Yu, Deirdre Quillen, Zhanpeng He, Ryan Julian, Karol Hausman, Chelsea Finn, and Sergey Levine. Meta-world: a benchmark and evaluation for multi-task and meta reinforcement learning. In <em>Conference on Robot Learning</em>, 1094–1100. PMLR, 2020.</p>
+</dd>
+<dt class="label" id="id7"><span class="brackets">ZSKP20</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
+<dd><p>Amy Zhang, Shagun Sodhani, Khimya Khetarpal, and Joelle Pineau. Multi-task reinforcement learning as a hidden-parameter block mdp. <em>arXiv preprint arXiv:2007.07206</em>, 2020.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="contribute.html" class="btn btn-neutral float-right" title="How to add new environments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../readme.html" class="btn btn-neutral float-left" title="MTEnv" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2021, Facebook AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
