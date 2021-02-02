@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MTEnv &mdash; mtenv 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Supported Environments" href="envs/supported.html" />
+    <link rel="prev" title="MTEnv: MultiTask Environments for Reinforcement Learning" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> mtenv
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MTEnv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-publications-submissions-using-mtenv-please-create-a-pull-request-to-add-the-missing-entries">List of publications &amp; submissions using MTEnv (please create a pull request to add the missing entries):</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#license">License</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#citing-mtenv">Citing MTEnv</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#multitask-observation">MultiTask Observation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributing-to-mtenv">Contributing to MTEnv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#community">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#glossary">Glossary</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#task-state">Task State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-links">Additional Links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Environments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="envs/supported.html">Supported Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="envs/contribute.html">How to add new environments</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">mtenv</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mtenv</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>MTEnv</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/pages/readme.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mtenv">
+<h1>MTEnv<a class="headerlink" href="#mtenv" title="Permalink to this headline">¶</a></h1>
+<p>MultiTask Environments for Reinforcement Learning.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>MTEnv is a library to interface with environments for multi-task reinforcement learning. It has two main components:</p>
+<ul class="simple">
+<li><p>A core API/interface that extends the <a class="reference external" href="https://gym.openai.com/">gym interface</a> and adds first-class support for multi-task RL.</p></li>
+<li><p>A <a class="reference external" href="https://facebookresearch.github.io/mtenv/pages/envs.html">collection of environments</a> that implement the API.</p></li>
+</ul>
+<p>Together, these two components should provide a standard interface for multi-task RL environments and make it easier to reuse components and tools across environments.</p>
+<p>You can read more about the difference between <code class="docutils literal notranslate"><span class="pre">MTEnv</span></code> and single-task environments <a class="reference external" href="https://facebookresearch.github.io/mtenv/pages/readme.html#multitask-observation">here.</a></p>
+<div class="section" id="list-of-publications-submissions-using-mtenv-please-create-a-pull-request-to-add-the-missing-entries">
+<h3>List of publications &amp; submissions using MTEnv (please create a pull request to add the missing entries):<a class="headerlink" href="#list-of-publications-submissions-using-mtenv-please-create-a-pull-request-to-add-the-missing-entries" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/2005.02934">Learning Adaptive Exploration Strategies in Dynamic Environments Through Informed Policy Regularization</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2007.07206">Learning Robust State Abstractions for Hidden-Parameter Block MDPs</a></p></li>
+</ul>
+</div>
+<div class="section" id="license">
+<h3>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h3>
+<p>MTEnv uses <a class="reference external" href="LICENSE">CC-BY-NC 4.0</a>.</p>
+</div>
+<div class="section" id="citing-mtenv">
+<h3>Citing MTEnv<a class="headerlink" href="#citing-mtenv" title="Permalink to this headline">¶</a></h3>
+<p>If you use MTEnv in your research, please use the following BibTeX entry:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Misc</span><span class="p">{</span><span class="n">Sodhani2020MTEnv</span><span class="p">,</span>
+  <span class="n">author</span> <span class="o">=</span>       <span class="p">{</span><span class="n">Shagun</span> <span class="n">Sodhani</span><span class="p">,</span> <span class="n">Ludovic</span> <span class="n">Denoyer</span><span class="p">,</span> <span class="n">Pierre</span><span class="o">-</span><span class="n">Alexandre</span> <span class="n">Kamienny</span><span class="p">,</span> <span class="n">Olivier</span> <span class="n">Delalleau</span><span class="p">},</span>
+  <span class="n">title</span> <span class="o">=</span>        <span class="p">{</span><span class="n">MTEnv</span> <span class="o">-</span> <span class="n">Environment</span> <span class="n">interface</span> <span class="k">for</span> <span class="n">mulit</span><span class="o">-</span><span class="n">task</span> <span class="n">reinforcement</span> <span class="n">learning</span><span class="p">},</span>
+  <span class="n">howpublished</span> <span class="o">=</span> <span class="p">{</span><span class="n">Github</span><span class="p">},</span>
+  <span class="n">year</span> <span class="o">=</span>         <span class="p">{</span><span class="mi">2021</span><span class="p">},</span>
+  <span class="n">url</span> <span class="o">=</span>          <span class="p">{</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">facebookresearch</span><span class="o">/</span><span class="n">mtenv</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>MTEnv has two components - a core API and environments that implement the API.</p>
+<p>The <strong>Core API</strong> can be installed via <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mtenv</span></code>.</p>
+<p>The <strong>list of environments</strong>, that implement the API, is available <a class="reference external" href="http://localhost:8000/pages/envs.html">here</a>. Any of these environments can be installed via <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;mtenv[env_name]&quot;</span></code>. For example, the <code class="docutils literal notranslate"><span class="pre">MetaWorld</span></code> environment can be installed via <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;mtenv[metaworld]&quot;</span></code>.</p>
+<p>All the environments can be installed at once using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;mtenv[all]&quot;</span></code>. However, note that some environments may have incompatible dependencies.</p>
+<p>MTEnv can also be installed from the source by first cloning the repo (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:facebookresearch/mtenv.git</span></code>), <em>cding</em> into the directory <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">mtenv</span></code>, and then using the pip commands as described above. For example, <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mtenv</span></code> to install the core API, and <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;mtenv[env_name]&quot;</span></code> to install a particular environment.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>MTEnv provides an interface very similar to the standard gym environments.
+One key difference between multitask environments (that implement the MTEnv
+interface and single tasks environments is in terms of observation that
+they return.</p>
+<div class="section" id="multitask-observation">
+<span id="id2"></span><h3>MultiTask Observation<a class="headerlink" href="#multitask-observation" title="Permalink to this headline">¶</a></h3>
+<p>The multitask environments returns a dictionary as the observation. This
+dictionary has two keys: (i) <cite>env_obs</cite> which maps to the observation from
+the environment (i.e. the observation that a single task environments return)
+and (ii) <cite>task_obs</cite> which maps to the task-specific information from the
+environment. In the simplest case, <cite>task_obs</cite> can be an integer denoting
+the task index. In other cases, <cite>task_obs</cite> can provide richer information.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mtenv</span> <span class="kn">import</span> <span class="n">make</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="s2">&quot;MT-MetaWorld-MT10-v0&quot;</span><span class="p">)</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+<span class="c1"># {&#39;env_obs&#39;: array([-0.03265039,  0.51487777,  0.2368754 , -0.06968209,  0.6235982 ,</span>
+<span class="c1">#    0.01492813,  0.        ,  0.        ,  0.        ,  0.03933976,</span>
+<span class="c1">#    0.89743189,  0.01492813]), &#39;task_obs&#39;: 1}</span>
+<span class="n">action</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+<span class="c1"># array([-0.76422   , -0.15384133,  0.74575615, -0.11724994], dtype=float32)</span>
+<span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+<span class="c1"># {&#39;env_obs&#39;: array([-0.02583682,  0.54065546,  0.22773503, -0.06968209,  0.6235982 ,</span>
+<span class="c1">#    0.01494118,  0.        ,  0.        ,  0.        ,  0.03933976,</span>
+<span class="c1">#    0.89743189,  0.01492813]), &#39;task_obs&#39;: 1}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://mtenv.readthedocs.io">https://mtenv.readthedocs.io</a></p>
+</div>
+<div class="section" id="contributing-to-mtenv">
+<h2>Contributing to MTEnv<a class="headerlink" href="#contributing-to-mtenv" title="Permalink to this headline">¶</a></h2>
+<p>There are several ways to contribute to MTEnv.</p>
+<ol class="arabic simple">
+<li><p>Use MTEnv in your research.</p></li>
+<li><p>Contribute a new environment. We currently support <a class="reference external" href="http://localhost:8000/pages/envs.html">three environment suites</a> via MTEnv and are looking forward to adding more environments. Contributors will be added as authors of the library. You can learn more about the workflow of adding an environment <a class="reference external" href="http://localhost:8000/pages/contribute_envs.html">here.</a></p></li>
+<li><p>Check out the <a class="reference external" href="https://github.com">beginner-friendly</a> issues on GitHub and contribute to fixing those issues.</p></li>
+<li><p>Check out additional details <a class="reference external" href="https://github.com/facebookresearch/mtenv/blob/main/.github/CONTRIBUTING.md">here</a>.</p></li>
+</ol>
+</div>
+<div class="section" id="community">
+<h2>Community<a class="headerlink" href="#community" title="Permalink to this headline">¶</a></h2>
+<p>Ask questions in the chat or github issues:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mtenv.zulipchat.com">Chat</a></p></li>
+<li><p><a class="reference external" href="https://https://github.com/facebookresearch/mtenv/issues">Issues</a></p></li>
+</ul>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="task-state">
+<span id="id5"></span><h3>Task State<a class="headerlink" href="#task-state" title="Permalink to this headline">¶</a></h3>
+<p>Task State contains all the information that the environment needs to
+switch to any other task.</p>
+</div>
+<div class="section" id="additional-links">
+<h3>Additional Links<a class="headerlink" href="#additional-links" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://opensource.facebook.com/legal/terms">Terms of Use</a></p></li>
+<li><p><a class="reference external" href="https://opensource.facebook.com/legal/privacy">Privacy Policy</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="envs/supported.html" class="btn btn-neutral float-right" title="Supported Environments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="MTEnv: MultiTask Environments for Reinforcement Learning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2021, Facebook AI
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
