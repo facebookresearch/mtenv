@@ -22,7 +22,7 @@ TaskStateType = List[int]
 
 ActionType = int
 
-EnvObsType = Dict[str, Union[int, List[int]]]
+EnvObsType = Dict[str, Union[int, List[int], List[float]]]
 ObsType = Dict[str, Union[EnvObsType, TaskObsType]]
 StepReturnType = Tuple[ObsType, RewardType, DoneType, InfoType]
 
@@ -43,7 +43,8 @@ class MTMiniWorldEnv(EnvToMTEnv):
     def sample_task_state(self) -> TaskStateType:
         return self.env.sample_task_state()
 
-    def reset(self, **kwargs: Dict[str, Any]) -> ObsType:
+    def reset(self, **kwargs: Dict[str, Any]) -> ObsType:  # type: ignore[override]
+        # signature is incompatible with supertype.
         self.assert_env_seed_is_set()
         return self.env.reset(**kwargs)
 

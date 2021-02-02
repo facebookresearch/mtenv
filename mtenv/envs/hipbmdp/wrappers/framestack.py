@@ -15,7 +15,7 @@ class FrameStack(gym.Wrapper):  # type: ignore[misc]
     def __init__(self, env: gym.core.Env, k: int):
         gym.Wrapper.__init__(self, env)
         self._k = k
-        self._frames: np.ndarray = deque([], maxlen=k)
+        self._frames: deque = deque([], maxlen=k)
         shp = env.observation_space.shape
         self.observation_space = gym.spaces.Box(
             low=0,

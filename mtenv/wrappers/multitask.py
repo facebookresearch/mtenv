@@ -7,7 +7,7 @@ from mtenv.core import MTEnv
 from mtenv.utils import seeding
 from mtenv.utils.types import (
     ActionType,
-    EnvObsType,
+    ObsType,
     StepReturnType,
     TaskObsType,
     TaskStateType,
@@ -48,7 +48,7 @@ class MultiTask(MTEnv):
         assert self.np_random_task is not None, "please call `seed_task()` first"
         self.env.assert_task_seed_is_set()
 
-    def reset(self) -> EnvObsType:
+    def reset(self) -> ObsType:
         return self.env.reset()
 
     def sample_task_state(self) -> TaskStateType:

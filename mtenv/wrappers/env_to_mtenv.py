@@ -45,7 +45,7 @@ class EnvToMTEnv(MTEnv):
         return as part of every observation as well. This function is useful
         in cases where the user only wants to access the task_obs and do not
         want to execute an action in the environment or reset the environment."""
-        return self.task_obs
+        return self._task_obs
 
     def get_task_state(self) -> TaskStateType:
         """Return all the information needed to execute the current task again.
