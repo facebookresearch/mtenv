@@ -9,21 +9,6 @@ from gym.envs.registration import EnvRegistry, EnvSpec
 
 
 class MultitaskEnvSpec(EnvSpec):  # type: ignore[misc]
-    """A specification for a particular instance of the environment. Used
-    to register the parameters for official evaluations.
-
-    Args:
-        id (str): The official environment ID
-        entry_point (Optional[str]): The Python entrypoint of the environment class (e.g. module.name:Class)
-        reward_threshold (Optional[int]): The reward threshold before the task is considered solved
-        kwargs (dict): The kwargs to pass to the environment class
-        nondeterministic (bool): Whether this environment is non-deterministic even after seeding
-        max_episode_steps (Optional[int]): The maximum number of steps that an episode can consist of
-
-    Attributes:
-        id (str): The official environment ID
-    """
-
     def __init__(
         self,
         id: str,
@@ -34,6 +19,25 @@ class MultitaskEnvSpec(EnvSpec):  # type: ignore[misc]
         max_episode_steps: Optional[int] = None,
         test_kwargs: Optional[Dict[str, Any]] = None,
     ):
+        """A specification for a particular instance of the environment.
+        Used to register the parameters for official evaluations.
+
+        Args:
+            id (str): The official environment ID
+            entry_point (Optional[str]): The Python entrypoint of the
+                environment class (e.g. module.name:Class)
+            reward_threshold (Optional[int]): The reward threshold before
+                the task is considered solved
+            kwargs (dict): The kwargs to pass to the environment class
+            nondeterministic (bool): Whether this environment is
+                non-deterministic even after seeding
+            max_episode_steps (Optional[int]): The maximum number of steps
+                that an episode can consist of
+            test_kwargs (Optional[Dict[str, Any]], optional): Dictionary
+                to specify parameters for automated testing. Defaults to
+                None.
+
+        """
         super().__init__(
             id=id,
             entry_point=entry_point,
@@ -45,7 +49,7 @@ class MultitaskEnvSpec(EnvSpec):  # type: ignore[misc]
         self.test_kwargs = test_kwargs
 
     def __repr__(self) -> str:
-        return "MultitaskEnvSpec({})".format(self.id)
+        return f"MultitaskEnvSpec({self.id})"
 
     @property
     def kwargs(self) -> Dict[str, Any]:
@@ -53,13 +57,6 @@ class MultitaskEnvSpec(EnvSpec):  # type: ignore[misc]
 
 
 class MultiEnvRegistry(EnvRegistry):  # type: ignore[misc]
-    """Register an env by ID. IDs remain stable over time and are
-    guaranteed to resolve to the same environment dynamics (or be
-    desupported). The goal is that results on a particular environment
-    should always be comparable, and not depend on the version of the
-    code that was running.
-    """
-
     def __init__(self) -> None:
         super().__init__()
 

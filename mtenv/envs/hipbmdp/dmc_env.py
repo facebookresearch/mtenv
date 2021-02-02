@@ -69,6 +69,30 @@ def build_dmc_env(
     frame_stack: int,
     sticky_observation_cfg: Dict[str, Any],
 ) -> Env:
+    """Build a single DMC environment as described in
+    :cite:`tassa2020dmcontrol`.
+
+    Args:
+        domain_name (str): name of the domain.
+        task_name (str): name of the task.
+        seed (int): environment seed (for reproducibility).
+        xml_file_id (str): id of the xml file to use.
+        visualize_reward (bool): should visualize reward ?
+        from_pixels (bool): return pixel observations?
+        height (int): height of pixel frames.
+        width (int): width of pixel frames.
+        frame_skip (int): should skip frames?
+        frame_stack (int): should stack frames together?
+        sticky_observation_cfg (Dict[str, Any]): Configuration for using
+            sticky observations. It should be a dictionary with three
+            keys, `should_use` which specifies if the config should be
+            used, `sticky_probability` which specifies the probability of
+            choosing a previous task and `last_k` which specifies the
+            number of previous frames to choose from.
+
+    Returns:
+        Env:
+    """
     env = _build_env(
         domain_name=domain_name,
         task_name=task_name,

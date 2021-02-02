@@ -2,7 +2,7 @@
 
 We are glad that you want to contribute to MTEnv.
 
-### Local Setup
+## Local Setup
 Follow these instructions to setup MTEnv locally:
 
 * Clone locally - `git clone git@github.com:facebookresearch/mtenv.git`.
@@ -15,6 +15,21 @@ Follow these instructions to setup MTEnv locally:
 * Install pre-commit hooks - `pre-commit install`. It will execute some
 of the tests when you commit the code. You can disable it by adding the
 "-n" flag to git command. For example, `git commit -m <commit_message> -n`.
+
+
+### Documentation
+
+We use [Sphinx](https://www.sphinx-doc.org/en/master/) to build the documentation.
+Follow the steps to build/update the documentation locally.
+
+* rm -rf docs/*
+* rm -rf docs_src/source/pages/api
+* rm -rf docs_src/build
+* sphinx-apidoc -o docs_src/source/pages/api mtenv
+* cd docs_src
+* make html
+* cd ..
+* cp -r docs_src/build/html/* docs/
 
 ## Pull Requests
 We actively welcome your pull requests.

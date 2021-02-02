@@ -11,7 +11,6 @@ import local_dm_control_suite as local_dmc_suite
 
 
 class DMCWrapper(BaseDMCWrapper):
-    # Based on implementation from https://github.com/denisyarats/dmc2gym/blob/master/dmc2gym/wrappers.py#L37
     def __init__(
         self,
         domain_name: str,
@@ -26,6 +25,12 @@ class DMCWrapper(BaseDMCWrapper):
         environment_kwargs: Any = None,
         channels_first: bool = True,
     ):
+        """This wrapper is based on implementation from
+        https://github.com/denisyarats/dmc2gym/blob/master/dmc2gym/wrappers.py#L37
+
+        We extend the wrapper so that we can use the modified version of
+        `dm_control_suite`.
+        """
         assert (
             "random" in task_kwargs  # type: ignore [operator]
         ), "please specify a seed, for deterministic behaviour"

@@ -1,16 +1,20 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+"""Wrapper that samples a new task everytime the environment is reset."""
 
-from mtenv.core import MTEnv
+from mtenv import MTEnv
 from mtenv.utils.types import ObsType
-from mtenv.wrappers.multitask import MultiTask as MultiTaskWrapper
+from mtenv.wrappers.multitask import MultiTask
 
 
-class SampleRandomTask(MultiTaskWrapper):
-    """
-    A wrapper that samples a new task at each env.reset() call
-    """
-
+class SampleRandomTask(MultiTask):
     def __init__(self, env: MTEnv):
+        """Wrapper that samples a new task everytime the environment is
+        reset.
+
+        Args:
+            env (MTEnv): Multitask environment to wrap over.
+        """
+
         super().__init__(env=env)
 
     def reset(self) -> ObsType:

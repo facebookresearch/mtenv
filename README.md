@@ -109,7 +109,7 @@ There are several ways to contribute to MTEnv.
 
 3. Check out the [beginner-friendly](https://github.com) issues on GitHub and contribute to fixing those issues.
 
-4. Check out additional details [here](.github/CONTRIBUTING.md).
+4. Check out additional details [here](https://github.com/facebookresearch/mtenv/blob/main/.github/CONTRIBUTING.md).
 
 ## Community
 

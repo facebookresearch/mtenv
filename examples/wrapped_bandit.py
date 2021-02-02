@@ -11,16 +11,16 @@ from mtenv.wrappers.env_to_mtenv import EnvToMTEnv
 
 class MTBanditWrapper(EnvToMTEnv):
     def set_task_observation(self, task_obs: TaskObsType) -> None:
-        self.task_obs = task_obs
-        self.env.reward_probability = self.task_obs
+        self._task_obs = task_obs
+        self.env.reward_probability = self._task_obs
         self._is_task_seed_set = False
 
     def get_task_state(self) -> TaskStateType:
-        return self.task_obs
+        return self._task_obs
 
     def set_task_state(self, task_state: TaskStateType) -> None:
-        self.task_obs = task_state
-        self.env.reward_probability = self.task_obs
+        self._task_obs = task_state
+        self.env.reward_probability = self._task_obs
 
     def sample_task_state(self) -> TaskStateType:
         """Sample a `task_state` that contains all the information needed to revert to any

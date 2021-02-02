@@ -26,6 +26,33 @@ def build(
     sticky_observation_cfg: Dict[str, Any],
     initial_task_state: int = 1,
 ) -> MTEnv:
+    """Build multitask environment as described in HiPBMDP paper. See
+    :cite:`mtrl_as_a_hidden_block_mdp` for more details.
+
+    Args:
+        domain_name (str): name of the domain.
+        task_name (str): name of the task.
+        seed (int): environment seed (for reproducibility).
+        xml_file_ids (List[str]): ids of xml files.
+        visualize_reward (bool): should visualize reward ?
+        from_pixels (bool): return pixel observations?
+        height (int): height of pixel frames.
+        width (int): width of pixel frames.
+        frame_skip (int): should skip frames?
+        frame_stack (int): should stack frames together?
+        sticky_observation_cfg (Dict[str, Any]): Configuration for using
+            sticky observations. It should be a dictionary with three
+            keys, `should_use` which specifies if the config should be
+            used, `sticky_probability` which specifies the probability of
+            choosing a previous task and `last_k` which specifies the
+            number of previous frames to choose from.
+        initial_task_state (int, optional): intial task/environment
+            to select. Defaults to 1.
+
+    Returns:
+        MTEnv:
+    """
+
     def get_func_to_make_envs(xml_file_id: str) -> EnvBuilderType:
         def _func() -> Env:
             return dmc_env.build_dmc_env(
