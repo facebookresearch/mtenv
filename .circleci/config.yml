@@ -1,0 +1,116 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2.1
+jobs:
+  # Linux
+  py36_linux:
+    docker:
+      - image: circleci/python:3.6
+    steps:
+      - checkout
+      - run:
+          name: "Mujoco setup"
+          command: |
+            wget https://www.roboti.us/download/mujoco200_linux.zip
+            unzip mujoco200_linux.zip -d ~/.mujoco
+            cp -r ~/.mujoco/mujoco200_linux ~/.mujoco/mujoco200
+            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/circleci/.mujoco/mujoco200_linux/bin
+            sudo apt install -y libosmesa6-dev libgl1-mesa-glx libglfw3 libglew-dev libglfw3-dev patchelf
+      - run:
+          name: "Preparing environment"
+          command: |
+            sudo apt-get install -y expect
+            sudo pip install nox
+      - run:
+          name: "Testing mtenv"
+          command: |
+              export NOX_PYTHON_VERSIONS=3.6
+              pip install nox
+              python3 -m nox
+
+  py37_linux:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - run:
+          name: "Mujoco setup"
+          command: |
+            wget https://www.roboti.us/download/mujoco200_linux.zip
+            unzip mujoco200_linux.zip -d ~/.mujoco
+            cp -r ~/.mujoco/mujoco200_linux ~/.mujoco/mujoco200
+            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/circleci/.mujoco/mujoco200_linux/bin
+            sudo apt install -y libosmesa6-dev libgl1-mesa-glx libglfw3 libglew-dev libglfw3-dev patchelf
+      - run:
+          name: "Preparing environment"
+          command: |
+            sudo apt-get install -y expect
+            sudo pip install nox
+      - run:
+          name: "Testing mtenv"
+          command: |
+              export NOX_PYTHON_VERSIONS=3.7
+              pip install nox
+              python3 -m nox
+
+  py38_linux:
+    docker:
+      - image: circleci/python:3.8
+    steps:
+      - checkout
+      - run:
+          name: "Mujoco setup"
+          command: |
+            wget https://www.roboti.us/download/mujoco200_linux.zip
+            unzip mujoco200_linux.zip -d ~/.mujoco
+            cp -r ~/.mujoco/mujoco200_linux ~/.mujoco/mujoco200
+            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/circleci/.mujoco/mujoco200_linux/bin
+            sudo apt install -y libosmesa6-dev libgl1-mesa-glx libglfw3 libglew-dev libglfw3-dev patchelf
+      - run:
+          name: "Preparing environment"
+          command: |
+            sudo apt-get install -y expect
+            sudo pip install nox
+      - run:
+          name: "Testing mtenv"
+          command: |
+              export NOX_PYTHON_VERSIONS=3.8
+              pip install nox
+              python3 -m nox
+  
+  py39_linux:
+    docker:
+      - image: circleci/python:3.9
+    steps:
+      - checkout
+      - run:
+          name: "Mujoco setup"
+          command: |
+            wget https://www.roboti.us/download/mujoco200_linux.zip
+            unzip mujoco200_linux.zip -d ~/.mujoco
+            cp -r ~/.mujoco/mujoco200_linux ~/.mujoco/mujoco200
+            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/circleci/.mujoco/mujoco200_linux/bin
+            sudo apt install -y libosmesa6-dev libgl1-mesa-glx libglfw3 libglew-dev libglfw3-dev patchelf
+      - run:
+          name: "Preparing environment"
+          command: |
+            sudo apt-get install -y expect
+            sudo pip install nox
+      - run:
+          name: "Testing mtenv"
+          command: |
+              export NOX_PYTHON_VERSIONS=3.9
+              pip install nox
+              python3 -m nox
+
+workflows:
+  version: 2.0
+  build:
+    jobs:
+      - py36_linux
+      - py37_linux
+      - py38_linux
+      - py39_linux
+

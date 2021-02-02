@@ -1,0 +1,1 @@
+git+https://github.com/rlworkgroup/metaworld.git@af8417bfc82a3e249b4b02156518d775f29eb289#egg=metaworld

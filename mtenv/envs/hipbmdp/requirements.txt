@@ -1,0 +1,1 @@
+git+git://github.com/denisyarats/dmc2gym.git@62ca3d886eb59a1927720d036be210bedc6d9f48#egg=dmc2gym
