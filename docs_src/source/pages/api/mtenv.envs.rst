@@ -12,6 +12,7 @@ Subpackages
    mtenv.envs.metaworld
    mtenv.envs.mpte
    mtenv.envs.shared
+   mtenv.envs.tabular_mdp
 
 Submodules
 ----------

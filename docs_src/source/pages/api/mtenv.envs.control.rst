@@ -4,6 +4,14 @@ mtenv.envs.control package
 Submodules
 ----------
 
+mtenv.envs.control.acrobot module
+---------------------------------
+
+.. automodule:: mtenv.envs.control.acrobot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 mtenv.envs.control.cartpole module
 ----------------------------------
 
