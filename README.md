@@ -42,7 +42,7 @@ You can read more about the difference between `MTEnv` and single-task environme
 
 ### License
 
-MTEnv is licensed under [MIT License](LICENSE).
+MTEnv uses [CC-BY-NC 4.0](LICENSE).
 
 ### Citing MTEnv
 
@@ -103,26 +103,18 @@ print(obs)
 
 There are several ways to contribute to MTEnv.
 
-1. Contribute a new environment. We currently support [three environment suites](http://localhost:8000/pages/envs.html) via MTEnv and are looking forward to adding more environments. Contributors will be added as authors of the library. You can learn more about the workflow of adding an environment [here.](http://localhost:8000/pages/contribute_envs.html)
+1. Use MTEnv in your research.
 
-2. Use MTEnv in your research.
+2. Contribute a new environment. We currently support [three environment suites](http://localhost:8000/pages/envs.html) via MTEnv and are looking forward to adding more environments. Contributors will be added as authors of the library. You can learn more about the workflow of adding an environment [here.](http://localhost:8000/pages/contribute_envs.html)
 
 3. Check out the [beginner-friendly](https://github.com) issues on GitHub and contribute to fixing those issues.
 
-### Local Setup
-Follow these instructions to setup MTEnv locally:
-
-* Clone locally - `git clone git@github.com:facebookresearch/mtenv.git`.
-* *cd* into the directory - `cd mtenv`.
-* Install MTEnv in the dev mode - `pip install -e ".[dev]"`
-* Install pre-commit hooks - `pre-commit install`
-* Tests can be run locally using `nox`. The code is linted using:
-    * `black`
-    * `flake8`
-    * `mypy`
+4. Check out additional details [here](.github/CONTRIBUTING.md).
 
 ## Community
 
 Ask questions in the chat or github issues:
 * [Chat](https://mtenv.zulipchat.com)
 * [Issues](https://https://github.com/facebookresearch/mtenv/issues)
+* [Terms of Use](https://opensource.facebook.com/legal/terms)
+* [Privacy Policy](https://opensource.facebook.com/legal/privacy)
