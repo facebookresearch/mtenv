@@ -1,3 +1,6 @@
+# Copyright (c) Facebook, Inc. and its affiliates.
+# All rights reserved.
+
 from typing import Any, Dict, Optional
 
 from gym import error

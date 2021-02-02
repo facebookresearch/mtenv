@@ -19,7 +19,7 @@ of the tests when you commit the code. You can disable it by adding the
 ## Pull Requests
 We actively welcome your pull requests.
 
-1. Fork the repo and create your branch from `master`.
+1. Fork the repo and create your branch from `main`.
 2. Set up the code using instructions from above.
 3. If you've added code that should be tested, add tests.
 4. If you've changed APIs, update the documentation.
