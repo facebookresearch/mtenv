@@ -28,7 +28,11 @@ List of publications & submissions using MTEnv (please create a pull request to 
 License
 ^^^^^^^
 
-MTEnv uses `CC-BY-NC 4.0 <LICENSE>`_.
+* MTEnv uses `MIT License <https://github.com/facebookresearch/mtenv/blob/main/LICENSE>`_.
+
+* `Terms of Use <https://opensource.facebook.com/legal/terms>`_
+
+* `Privacy Policy <https://opensource.facebook.com/legal/privacy>`_
 
 Citing MTEnv
 ^^^^^^^^^^^^
@@ -134,10 +138,3 @@ Task State
 
 Task State contains all the information that the environment needs to
 switch to any other task.
-
-Additional Links
-^^^^^^^^^^^^^^^^
-
-
-* `Terms of Use <https://opensource.facebook.com/legal/terms>`_
-* `Privacy Policy <https://opensource.facebook.com/legal/privacy>`_

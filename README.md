@@ -42,7 +42,11 @@ You can read more about the difference between `MTEnv` and single-task environme
 
 ### License
 
-MTEnv uses [CC-BY-NC 4.0](LICENSE).
+* MTEnv uses [MIT License](https://github.com/facebookresearch/mtenv/blob/main/LICENSE).
+
+* [Terms of Use](https://opensource.facebook.com/legal/terms)
+
+* [Privacy Policy](https://opensource.facebook.com/legal/privacy)
 
 ### Citing MTEnv
 
@@ -115,7 +119,7 @@ There are several ways to contribute to MTEnv.
 
 Ask questions in the chat or github issues:
 * [Chat](https://mtenv.zulipchat.com)
-* [Issues](https://https://github.com/facebookresearch/mtenv/issues)
+* [Issues](https://github.com/facebookresearch/mtenv/issues)
 
 ### Additional Links
 

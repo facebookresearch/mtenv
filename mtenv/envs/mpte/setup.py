@@ -20,7 +20,7 @@ setuptools.setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
-        "License :: Attribution-NonCommercial 4.0 International",
+        "License ::  MIT",
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.6",
