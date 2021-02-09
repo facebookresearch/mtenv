@@ -125,4 +125,4 @@ Ask questions in the chat or github issues:
 
 ## Acknowledgements
 
-* Config/notes for circleci, pre-commit, mypy etc are borrowed/modified from [Hydra](https://github.com/facebookresearch/hydra).
+* Project file pre-commit, mypy config, towncrier config, circleci etc are based on same files from [Hydra](https://github.com/facebookresearch/hydra).
