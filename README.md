@@ -22,7 +22,7 @@ MultiTask Environments for Reinforcement Learning.
 
 6. [Community](#Community)
 
-6. [Acknowledgements](#Acknowledgements)
+7. [Acknowledgements](#Acknowledgements)
 
 ## Introduction
 
