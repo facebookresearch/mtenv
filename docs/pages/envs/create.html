@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>How to add new environments &mdash; mtenv 0.1 documentation</title>
+  <title>How to create new environments &mdash; mtenv 0.1 documentation</title>
   
 
   
@@ -91,7 +91,7 @@
 <p class="caption"><span class="caption-text">Environments</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="supported.html">Supported Environments</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How to add new environments</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to create new environments</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API</span></p>
 <ul>
@@ -142,13 +142,13 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>How to add new environments</li>
+      <li>How to create new environments</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/pages/envs/contribute.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/pages/envs/create.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -161,8 +161,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="how-to-add-new-environments">
-<h1>How to add new environments<a class="headerlink" href="#how-to-add-new-environments" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="how-to-create-new-environments">
+<h1>How to create new environments<a class="headerlink" href="#how-to-create-new-environments" title="Permalink to this headline">¶</a></h1>
 <p>There are two workflows:</p>
 <ol class="arabic simple">
 <li><p>You have a standard gym environment, which you want to convert into a multitask environment. For example, <code class="docutils literal notranslate"><span class="pre">examples/bandit.py</span></code> implements <code class="docutils literal notranslate"><span class="pre">BanditEnv</span></code> which is a standard multi-arm bandit, without an explicit notion of task. The user has the following options:</p>
@@ -173,6 +173,7 @@
 </li>
 <li><p>If you do not have a single-task gym environment to start with, it is recommended that you directly extend the <code class="docutils literal notranslate"><span class="pre">MTEnv</span></code> class. Implementations in <code class="docutils literal notranslate"><span class="pre">mtenv/envs</span></code> can be seen as a reference.</p></li>
 </ol>
+<p>If you want to contribute an environment to the repo, checkout the <cite>Contribution Guide &lt;https://github.com/facebookresearch/mtenv/blob/main/.github/CONTRIBUTING.md&gt;</cite>.</p>
 </div>
 
 

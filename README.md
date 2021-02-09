@@ -22,6 +22,8 @@ MultiTask Environments for Reinforcement Learning.
 
 6. [Community](#Community)
 
+7. [Acknowledgements](#Acknowledgements)
+
 ## Introduction
 
 MTEnv is a library to interface with environments for multi-task reinforcement learning. It has two main components:
@@ -52,7 +54,7 @@ You can read more about the difference between `MTEnv` and single-task environme
 
 If you use MTEnv in your research, please use the following BibTeX entry:
 ```
-@Misc{Sodhani2020MTEnv,
+@Misc{Sodhani2021MTEnv,
   author =       {Shagun Sodhani, Ludovic Denoyer, Pierre-Alexandre Kamienny, Olivier Delalleau},
   title =        {MTEnv - Environment interface for mulit-task reinforcement learning},
   howpublished = {Github},
@@ -121,7 +123,6 @@ Ask questions in the chat or github issues:
 * [Chat](https://mtenv.zulipchat.com)
 * [Issues](https://github.com/facebookresearch/mtenv/issues)
 
-### Additional Links
+## Acknowledgements
 
-* [Terms of Use](https://opensource.facebook.com/legal/terms)
-* [Privacy Policy](https://opensource.facebook.com/legal/privacy)
+* Project file pre-commit, mypy config, towncrier config, circleci etc are based on same files from [Hydra](https://github.com/facebookresearch/hydra).
