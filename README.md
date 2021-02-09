@@ -22,6 +22,8 @@ MultiTask Environments for Reinforcement Learning.
 
 6. [Community](#Community)
 
+6. [Acknowledgements](#Acknowledgements)
+
 ## Introduction
 
 MTEnv is a library to interface with environments for multi-task reinforcement learning. It has two main components:
@@ -121,7 +123,6 @@ Ask questions in the chat or github issues:
 * [Chat](https://mtenv.zulipchat.com)
 * [Issues](https://github.com/facebookresearch/mtenv/issues)
 
-### Additional Links
+## Acknowledgements
 
-* [Terms of Use](https://opensource.facebook.com/legal/terms)
-* [Privacy Policy](https://opensource.facebook.com/legal/privacy)
+* Config/notes for circleci, pre-commit, mypy etc are borrowed/modified from [Hydra](https://github.com/facebookresearch/hydra).
