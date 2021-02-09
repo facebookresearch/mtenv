@@ -54,7 +54,7 @@ You can read more about the difference between `MTEnv` and single-task environme
 
 If you use MTEnv in your research, please use the following BibTeX entry:
 ```
-@Misc{Sodhani2020MTEnv,
+@Misc{Sodhani2021MTEnv,
   author =       {Shagun Sodhani, Ludovic Denoyer, Pierre-Alexandre Kamienny, Olivier Delalleau},
   title =        {MTEnv - Environment interface for mulit-task reinforcement learning},
   howpublished = {Github},

@@ -18,6 +18,5 @@ There are two workflows:
 #. 
    If you do not have a single-task gym environment to start with, it is recommended that you directly extend the ``MTEnv`` class. Implementations in ``mtenv/envs`` can be seen as a reference.
 
-If you want to contribute an environment to the repo, checkout the 
-[Contribution Guide](https://github.com/facebookresearch/mtenv/blob/main/.github/CONTRIBUTING.md). 
+If you want to contribute an environment to the repo, checkout the `Contribution Guide <https://github.com/facebookresearch/mtenv/blob/main/.github/CONTRIBUTING.md>`.
 
