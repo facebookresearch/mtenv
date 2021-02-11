@@ -13,8 +13,6 @@ StepReturnType = Tuple[EnvObsType, RewardType, DoneType, InfoType]
 
 class BanditEnv(Env):  # type: ignore[misc]
     # Class cannot subclass 'Env' (has type 'Any')
-    """Bandit Env based on Ludovic's implementation.
-    Note that this env does not have any nexplicit notion of task"""
 
     def __init__(self, n_arms: int):
         self.n_arms = n_arms

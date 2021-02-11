@@ -83,9 +83,6 @@ class TwoGoalMazeEnv(MiniWorldEnv):
         self.np_random_env: Optional[RandomState] = None
         self.size_x, self.size_y = size_x, size_y
         self.task_state = []
-        # for k in range(n_tasks):
-        #    v=float(self.np_random_task.randint(2))
-        #    self.task_state.append([v])
 
         super().__init__()
         # Allow only movement actions (left/right/forward)
@@ -99,7 +96,7 @@ class TwoGoalMazeEnv(MiniWorldEnv):
             _obs_space = BoxSpace(
                 low=-1.0,
                 high=1.0,
-                shape=(64, 64),  # placeholder. Check with Ludovic.
+                shape=(64, 64),
                 dtype=np.float32,
             )
         self.observation_space = DictSpace(
@@ -193,28 +190,19 @@ class TwoGoalMazeEnv(MiniWorldEnv):
         self.boxes = []
         self.boxes.append(Box(color="blue"))
         self.boxes.append(Box(color="red"))
-        # if (self.task_state[0]==0):
-        #     self.boxes.append(Box(color='green'))
-        # else:
-        #     self.boxes.append(Box(color='yellow'))
         self.place_entity(self.boxes[0], room=room1)
         self.place_entity(self.boxes[1], room=room1)
-        # self.place_entity(self.boxes[2], room=room1)
 
         # Choose a random room and position to spawn at
         _dir = self.np_random_env.randint(8) * (math.pi / 4) - math.pi
-        # py=(self.np_random_env.rand()*2.-1.)*self.size_y
-        # px=-(self.np_random_env.rand()*self.size_x)
         self.place_agent(
             dir=_dir,
             room=room1,
-            #            min_x=-self.size_x, max_x=0
         )
         while self._dist() < 2 or self._ndist() < 2:
             self.place_agent(
                 dir=_dir,
                 room=room1,
-                # min_x=px, max_x=py, min_z=py,max_z=py
             )
 
     def _dist(self):
@@ -267,8 +255,6 @@ class TwoGoalMazeEnv(MiniWorldEnv):
             (self.agent.pos[2] / self.size_y) * 2.1 - 1.0,
         ]
         _dir = [self.agent.dir_vec[0], self.agent.dir_vec[2]]
-        # if self.s_dist()<0.5:
-        #     _mu=[1.,self.task_state[0]]
 
         if self.obs_type == "xy":
             _mu = [0.0]
@@ -306,11 +292,6 @@ class TwoGoalMazeEnv(MiniWorldEnv):
 
     def step(self, action: ActionType) -> StepReturnType:
         self.step_count += 1
-        # rand = self.rand if self.domain_rand else None
-        # fwd_step = self.params.sample(rand, "forward_step")
-        # fwd_drift = self.params.sample(rand, "forward_drift")
-        # turn_step = self.params.sample(rand, "turn_step")
-
         if not self.blocked:
             if action == 2:
                 self.move_agent(0.51, 0.0)  # fwd_step, fwd_drift)
@@ -325,31 +306,15 @@ class TwoGoalMazeEnv(MiniWorldEnv):
         if distance < 2:
             reward = +1.0
             done = True
-            # _dir = self.np_random_env.randint(0, 4) * (math.pi / 2)-math.pi
-            # self.place_agent(
-            # dir=_dir,
-            # room=self.room1
-            # )
         distance = self._ndist()
         if distance < 2:
             reward = -1.0
             done = True
-            # _dir = self.np_random_env.randint() * (2*math.pi)-math.pi
-            # # py=(self.np_random_env.rand()*2.-1.)*self.size_y
-            # # px=-(self.np_random_env.rand()*self.size_x)
-            # self.place_agent(
-            #     dir=_dir,
-            #     room=self.room1,
-            #     # min_x=px, max_x=py, min_z=py,max_z=py
-            # )
-
-            # print("Touched at "+str(self.step_count))
         _pos = [
             (self.agent.pos[0] / self.size_x) * 2.1 - 1.0,
             (self.agent.pos[2] / self.size_y) * 2.1 - 1.0,
         ]
         _dir = [self.agent.dir_vec[0], self.agent.dir_vec[2]]
-        # print(_mu)
 
         if self.obs_type == "xy":
             at = math.atan2(_dir[0], _dir[1])
@@ -376,28 +341,3 @@ def build_two_goal_maze_env(size_x: int, size_y: int, task_seed: int, n_tasks: i
         task_observation_space=DiscreteSpace(n=1),
     )
     return env
-
-
-# if __name__ == "__main__":
-#     e = MTMiniWorldEnv(
-#         TwoGoalMazeEnv(size_x=3, size_y=3, task_seed=169, n_tasks=100),
-#         task_observation_space=DiscreteSpace(n=1),
-#     )
-#     e = TimeLimit(e, max_episode_steps=100)
-#     seed = 5
-#     env = NDiscreteGymEnv(e, 1, seed)
-#     ne = 0
-#     while True:
-#         ne += 1
-#         env.reset()
-#         for n in range(10000):
-#             action = torch.tensor([env.action_space.sample()])
-#             agent_do = DictTensor({"action": action}).to(torch.device("cpu"))
-
-#             o, o2 = env.step(agent_do)
-#             d = o[0]["done"][0]
-#             # env.render()
-#             if d:
-#                 print("break at " + str(n))
-#                 break
-#         print(ne)

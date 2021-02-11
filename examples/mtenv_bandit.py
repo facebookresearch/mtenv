@@ -7,9 +7,6 @@ from mtenv.utils.types import ActionType, ObsType, StepReturnType, TaskStateType
 
 
 class MTBanditEnv(MTEnv):
-    """Multitask Bandit Env based on Ludovic's implementation.
-    Note that this env has an explicit notion of task"""
-
     def __init__(self, n_arms: int):
         super().__init__(
             action_space=spaces.Discrete(n_arms),
