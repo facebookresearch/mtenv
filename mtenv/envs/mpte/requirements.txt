@@ -1,0 +1,1 @@
+gym-miniworld>=2020.1.9
