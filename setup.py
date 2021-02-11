@@ -63,8 +63,8 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="mtenv",
     version=get_version("mtenv/__init__.py"),
-    author="Shagun Sodhani, Ludovic Denoyer, Olivier Delalleau, Pierre-Alexandre Kamienny",
-    author_email="sshagunsodhani@gmail.com, denoyer@fb.com, odelalleau@fb.com, pakamienny@fb.com",
+    author="Shagun Sodhani, Ludovic Denoyer, Pierre-Alexandre Kamienny, Olivier Delalleau",
+    author_email="sshagunsodhani@gmail.com, denoyer@fb.com, pakamienny@fb.com, odelalleau@fb.com",
     description="MTEnv: Environment interface for mulit-task reinforcement learning",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
