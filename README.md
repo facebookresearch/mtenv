@@ -42,6 +42,8 @@ You can read more about the difference between `MTEnv` and single-task environme
 
 * [Learning Robust State Abstractions for Hidden-Parameter Block MDPs](https://arxiv.org/abs/2007.07206)
 
+* [Multi-Task Reinforcement Learning with Context-based Representations](https://arxiv.org/abs/2102.06177)
+
 ### License
 
 * MTEnv uses [MIT License](https://github.com/facebookresearch/mtenv/blob/main/LICENSE).

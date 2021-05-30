@@ -25,6 +25,8 @@ List of publications & submissions using MTEnv (please create a pull request to 
 
 * `Learning Robust State Abstractions for Hidden-Parameter Block MDPs <https://arxiv.org/abs/2007.07206>`_
 
+* `Multi-Task Reinforcement Learning with Context-based Representations] <https://arxiv.org/abs/2102.06177>` _
+
 License
 ^^^^^^^
 
