@@ -157,7 +157,7 @@ class MTEnv(Env, ABC):  # type: ignore[misc]
         needs to switch to any other task.
 
         The subclasses, extending this class, should ensure that the task
-        seed is set (by calling `seed(int)`) before invoking this
+        seed is set (by calling `seed_task(int)`) before invoking this
         method (for reproducibility). It can be done by invoking
         `self.assert_task_seed_is_set()`.
 
