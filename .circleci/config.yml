@@ -13,7 +13,7 @@ jobs:
       - run:
           name: "Mujoco setup"
           command: |
-            wget https://www.roboti.us/download/mujoco200_linux.zip
+            wget https://github.com/deepmind/mujoco/archive/refs/tags/2.2.1.zip
             unzip mujoco200_linux.zip -d ~/.mujoco
             cp -r ~/.mujoco/mujoco200_linux ~/.mujoco/mujoco200
             export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/circleci/.mujoco/mujoco200_linux/bin
@@ -38,10 +38,9 @@ jobs:
       - run:
           name: "Mujoco setup"
           command: |
-            wget https://www.roboti.us/download/mujoco200_linux.zip
-            unzip mujoco200_linux.zip -d ~/.mujoco
-            cp -r ~/.mujoco/mujoco200_linux ~/.mujoco/mujoco200
-            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/circleci/.mujoco/mujoco200_linux/bin
+            wget https://github.com/deepmind/mujoco/archive/refs/tags/2.2.1.zip -O mujoco.zip
+            unzip mujoco.zip -d ~/.mujoco
+            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/circleci/.mujoco/mujoco/bin
             sudo apt install -y libosmesa6-dev libgl1-mesa-glx libglfw3 libglew-dev libglfw3-dev patchelf
       - run:
           name: "Preparing environment"
@@ -63,10 +62,9 @@ jobs:
       - run:
           name: "Mujoco setup"
           command: |
-            wget https://www.roboti.us/download/mujoco200_linux.zip
-            unzip mujoco200_linux.zip -d ~/.mujoco
-            cp -r ~/.mujoco/mujoco200_linux ~/.mujoco/mujoco200
-            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/circleci/.mujoco/mujoco200_linux/bin
+            wget https://github.com/deepmind/mujoco/archive/refs/tags/2.2.1.zip -O mujoco.zip
+            unzip mujoco.zip -d ~/.mujoco
+            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/circleci/.mujoco/mujoco/bin
             sudo apt install -y libosmesa6-dev libgl1-mesa-glx libglfw3 libglew-dev libglfw3-dev patchelf
       - run:
           name: "Preparing environment"
@@ -88,10 +86,9 @@ jobs:
       - run:
           name: "Mujoco setup"
           command: |
-            wget https://www.roboti.us/download/mujoco200_linux.zip
-            unzip mujoco200_linux.zip -d ~/.mujoco
-            cp -r ~/.mujoco/mujoco200_linux ~/.mujoco/mujoco200
-            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/circleci/.mujoco/mujoco200_linux/bin
+            wget https://github.com/deepmind/mujoco/archive/refs/tags/2.2.1.zip -O mujoco.zip
+            unzip mujoco.zip -d ~/.mujoco
+            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/circleci/.mujoco/mujoco/bin
             sudo apt install -y libosmesa6-dev libgl1-mesa-glx libglfw3 libglew-dev libglfw3-dev patchelf
       - run:
           name: "Preparing environment"
