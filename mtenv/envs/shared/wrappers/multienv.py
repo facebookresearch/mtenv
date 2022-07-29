@@ -81,7 +81,7 @@ class MultiEnvWrapper(MTEnv):
 
     def sample_task_state(self) -> TaskStateType:
         self.assert_task_seed_is_set()
-        task_state = self.np_random_task.randint(self._num_tasks)  # type: ignore[union-attr]
+        task_state = self.np_random_task.randint(self._num_tasks)  # type: ignore[no-untyped-call]
         # The assert statement (at the start of the function) ensures that self.np_random_task
         # is not None. Mypy is raising the warning incorrectly.
         assert isinstance(task_state, int)

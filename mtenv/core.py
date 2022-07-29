@@ -28,9 +28,9 @@ class MTEnv(Env):  # type: ignore[type-arg]
 
     def __init__(
         self,
-        action_space: Space, # type: ignore[type-arg]
-        env_observation_space: Space, # type: ignore[type-arg]
-        task_observation_space: Space, # type: ignore[type-arg]
+        action_space: Space,  # type: ignore[type-arg]
+        env_observation_space: Space,  # type: ignore[type-arg]
+        task_observation_space: Space,  # type: ignore[type-arg]
     ) -> None:
         """Main class for multitask RL Environments.
 
@@ -159,7 +159,8 @@ class MTEnv(Env):  # type: ignore[type-arg]
         """
         assert self.np_random_task is not None, "please call `seed_task()` first"
 
-    def reset(self, # type: ignore[return, override]
+    def reset(
+        self,  # type: ignore[return, override]
         *,
         env_seed: Optional[int] = None,
         task_seed: Optional[int] = None,

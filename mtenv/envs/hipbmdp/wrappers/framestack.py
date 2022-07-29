@@ -9,7 +9,7 @@ import numpy as np
 from mtenv.utils.types import ActionType, EnvStepReturnType
 
 
-class FrameStack(gym.Wrapper):  # type: ignore[misc]
+class FrameStack(gym.Wrapper):  # type: ignore[type-arg]
     # Mypy error: Class cannot subclass 'Wrapper' (has type 'Any')  [misc]
 
     def __init__(self, env: gym.core.Env, k: int):

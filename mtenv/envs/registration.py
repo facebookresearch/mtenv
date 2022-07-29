@@ -86,7 +86,7 @@ def make(
     new_step_api: bool = False,
     disable_env_checker: Optional[bool] = None,
     **kwargs: Any,
-) -> "MTEnv": # type: ignore[name-defined]
+) -> "MTEnv":  # type: ignore[name-defined]
     """Create an environment according to the given ID.
 
     Args:
@@ -108,7 +108,7 @@ def make(
     if isinstance(id, MultitaskEnvSpec):
         spec_ = id
     else:
-        module, id = (None, id) if ":" not in id else id.split(":") # type: ignore[assignment]
+        module, id = (None, id) if ":" not in id else id.split(":")  # type: ignore[assignment]
         if module is not None:
             try:
                 importlib.import_module(module)
@@ -117,7 +117,7 @@ def make(
                     f"{e}. Environment registration via importing a module failed. "
                     f"Check whether '{module}' contains env registration and can be imported."
                 )
-        spec_ = registry.get(id) # type: ignore[assignment]
+        spec_ = registry.get(id)  # type: ignore[assignment]
 
         ns, name, version = parse_env_id(id)
         latest_version = find_highest_version(ns, name)
@@ -133,7 +133,7 @@ def make(
         if version is None and latest_version is not None:
             version = latest_version
             new_env_id = get_env_id(ns, name, version)
-            spec_ = registry.get(new_env_id) # type: ignore[assignment]
+            spec_ = registry.get(new_env_id)  # type: ignore[assignment]
             logger.warn(
                 f"Using the latest versioned environment `{new_env_id}` "
                 f"instead of the unversioned environment `{id}`."
@@ -161,11 +161,11 @@ def make(
     # If we have access to metadata we check that "render_mode" is valid and see if the HumanRendering wrapper needs to be applied
     if mode is not None and hasattr(env_creator, "metadata"):
         assert isinstance(
-            env_creator.metadata, dict # type: ignore[attr-defined]
-        ), f"Expect the environment creator ({env_creator}) metadata to be dict, actual type: {type(env_creator.metadata)}" # type: ignore[attr-defined]
+            env_creator.metadata, dict  # type: ignore[attr-defined]
+        ), f"Expect the environment creator ({env_creator}) metadata to be dict, actual type: {type(env_creator.metadata)}"  # type: ignore[attr-defined]
 
-        if "render_modes" in env_creator.metadata: # type: ignore[attr-defined]
-            render_modes = env_creator.metadata["render_modes"] # type: ignore[attr-defined]
+        if "render_modes" in env_creator.metadata:  # type: ignore[attr-defined]
+            render_modes = env_creator.metadata["render_modes"]  # type: ignore[attr-defined]
             if not isinstance(render_modes, Sequence):
                 logger.warn(
                     f"Expects the environment metadata render_modes to be a Sequence (tuple or list), actual type: {type(render_modes)}"
@@ -192,7 +192,7 @@ def make(
                 )
         else:
             logger.warn(
-                f"The environment creator metadata doesn't include `render_modes`, contains: {list(env_creator.metadata.keys())}" # type: ignore[attr-defined]
+                f"The environment creator metadata doesn't include `render_modes`, contains: {list(env_creator.metadata.keys())}"  # type: ignore[attr-defined]
             )
 
     try:
@@ -219,7 +219,7 @@ def make(
     if disable_env_checker is False or (
         disable_env_checker is None and spec_.disable_env_checker is False
     ):
-        env = PassiveEnvChecker(env) # type: ignore[no-untyped-call]
+        env = PassiveEnvChecker(env)  # type: ignore[no-untyped-call]
 
     env = StepAPICompatibility(env, new_step_api)
 

@@ -32,7 +32,7 @@ class DMCWrapper(BaseDMCWrapper):
         `dm_control_suite`.
         """
         assert (
-            "random" in task_kwargs  # type: ignore [operator]
+            "random" in task_kwargs
         ), "please specify a seed, for deterministic behaviour"
         self._from_pixels = from_pixels
         self._height = height
@@ -77,4 +77,4 @@ class DMCWrapper(BaseDMCWrapper):
         self.current_state = None
 
         # set seed
-        self.seed(seed=task_kwargs["random"])  # type: ignore [index]
+        self.seed(seed=task_kwargs["random"])

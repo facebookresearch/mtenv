@@ -107,7 +107,7 @@ def build_dmc_env(
     if from_pixels:
         env = framestack.FrameStack(env, k=frame_stack)
     if sticky_observation_cfg and sticky_observation_cfg["should_use"]:
-        env = sticky_observation.StickyObservation(  # type: ignore[attr-defined]
+        env = sticky_observation.StickyObservation(
             env=env,
             sticky_probability=sticky_observation_cfg["sticky_probability"],
             last_k=sticky_observation_cfg["last_k"],
