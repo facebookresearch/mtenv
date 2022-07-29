@@ -7,8 +7,7 @@ import importlib.util
 from dataclasses import dataclass, field
 from typing import Optional, Sequence, Union
 
-from gym import Env, error, logger
-from gym.core import Env
+from gym import error, logger
 from gym.envs.registration import (
     EnvSpec,
     _check_spec_register,
@@ -28,6 +27,8 @@ from gym.wrappers import (
     TimeLimit,
 )
 from gym.wrappers.env_checker import PassiveEnvChecker
+
+from mtenv.core import MTEnv
 
 
 @dataclass
@@ -85,7 +86,7 @@ def make(
     new_step_api: bool = False,
     disable_env_checker: Optional[bool] = None,
     **kwargs,
-) -> Env:
+) -> MTEnv:
     """Create an environment according to the given ID.
 
     Args:
