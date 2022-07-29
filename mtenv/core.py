@@ -1,6 +1,6 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 """Core API of MultiTask Environments for Reinforcement Learning."""
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import List, Optional
 
 from gym.core import Env
@@ -18,7 +18,7 @@ from mtenv.utils.types import (
 )
 
 
-class MTEnv(Env, ABC):  # type: ignore[misc]
+class MTEnv(Env):  # type: ignore[misc]
     def __init__(
         self,
         action_space: Space,
