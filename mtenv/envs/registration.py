@@ -5,7 +5,7 @@ import copy
 import importlib
 import importlib.util
 from dataclasses import dataclass, field
-from typing import Optional, Sequence, Union
+from typing import Any, Dict, Optional, Sequence, Union
 
 from gym import error, logger
 from gym.envs.registration import (
@@ -19,7 +19,7 @@ from gym.envs.registration import (
     parse_env_id,
     registry,
 )
-from gym.wrappers import (
+from gym.wrappers import (  # type: ignore[attr-defined]
     AutoResetWrapper,
     HumanRendering,
     OrderEnforcing,
@@ -32,13 +32,13 @@ from gym.wrappers.env_checker import PassiveEnvChecker
 @dataclass
 class MultitaskEnvSpec(EnvSpec):
 
-    test_kwargs: dict = field(default_factory=dict)
+    test_kwargs: Dict[str, Any] = field(default_factory=dict)
 
     def __repr__(self) -> str:
         return f"MultitaskEnvSpec({self.id})"
 
 
-def register(id: str, **kwargs):
+def register(id: str, **kwargs: Any) -> None:
     """Register an environment with gym.
 
     The `id` parameter corresponds to the name of the environment, with the syntax as follows:
@@ -52,6 +52,8 @@ def register(id: str, **kwargs):
     """
     global registry, current_namespace
     ns, name, version = parse_env_id(id)
+
+    ns_id: Optional[str]
 
     if current_namespace is not None:
         if (
@@ -83,8 +85,8 @@ def make(
     autoreset: bool = False,
     new_step_api: bool = False,
     disable_env_checker: Optional[bool] = None,
-    **kwargs,
-) -> "MTEnv":
+    **kwargs: Any,
+) -> "MTEnv": # type: ignore[name-defined]
     """Create an environment according to the given ID.
 
     Args:
@@ -106,7 +108,7 @@ def make(
     if isinstance(id, MultitaskEnvSpec):
         spec_ = id
     else:
-        module, id = (None, id) if ":" not in id else id.split(":")
+        module, id = (None, id) if ":" not in id else id.split(":") # type: ignore[assignment]
         if module is not None:
             try:
                 importlib.import_module(module)
@@ -115,7 +117,7 @@ def make(
                     f"{e}. Environment registration via importing a module failed. "
                     f"Check whether '{module}' contains env registration and can be imported."
                 )
-        spec_ = registry.get(id)
+        spec_ = registry.get(id) # type: ignore[assignment]
 
         ns, name, version = parse_env_id(id)
         latest_version = find_highest_version(ns, name)
@@ -131,7 +133,7 @@ def make(
         if version is None and latest_version is not None:
             version = latest_version
             new_env_id = get_env_id(ns, name, version)
-            spec_ = registry.get(new_env_id)
+            spec_ = registry.get(new_env_id) # type: ignore[assignment]
             logger.warn(
                 f"Using the latest versioned environment `{new_env_id}` "
                 f"instead of the unversioned environment `{id}`."
@@ -141,6 +143,7 @@ def make(
             _check_version_exists(ns, name, version)
             raise error.Error(f"No registered env with id: {id}")
 
+    assert isinstance(spec_, MultitaskEnvSpec)
     _kwargs = spec_.kwargs.copy()
     _kwargs.update(kwargs)
 
@@ -158,11 +161,11 @@ def make(
     # If we have access to metadata we check that "render_mode" is valid and see if the HumanRendering wrapper needs to be applied
     if mode is not None and hasattr(env_creator, "metadata"):
         assert isinstance(
-            env_creator.metadata, dict
-        ), f"Expect the environment creator ({env_creator}) metadata to be dict, actual type: {type(env_creator.metadata)}"
+            env_creator.metadata, dict # type: ignore[attr-defined]
+        ), f"Expect the environment creator ({env_creator}) metadata to be dict, actual type: {type(env_creator.metadata)}" # type: ignore[attr-defined]
 
-        if "render_modes" in env_creator.metadata:
-            render_modes = env_creator.metadata["render_modes"]
+        if "render_modes" in env_creator.metadata: # type: ignore[attr-defined]
+            render_modes = env_creator.metadata["render_modes"] # type: ignore[attr-defined]
             if not isinstance(render_modes, Sequence):
                 logger.warn(
                     f"Expects the environment metadata render_modes to be a Sequence (tuple or list), actual type: {type(render_modes)}"
@@ -189,7 +192,7 @@ def make(
                 )
         else:
             logger.warn(
-                f"The environment creator metadata doesn't include `render_modes`, contains: {list(env_creator.metadata.keys())}"
+                f"The environment creator metadata doesn't include `render_modes`, contains: {list(env_creator.metadata.keys())}" # type: ignore[attr-defined]
             )
 
     try:
@@ -216,7 +219,7 @@ def make(
     if disable_env_checker is False or (
         disable_env_checker is None and spec_.disable_env_checker is False
     ):
-        env = PassiveEnvChecker(env)
+        env = PassiveEnvChecker(env) # type: ignore[no-untyped-call]
 
     env = StepAPICompatibility(env, new_step_api)
 
