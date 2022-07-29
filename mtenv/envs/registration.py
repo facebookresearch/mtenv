@@ -8,7 +8,7 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, Optional, Sequence, Union
 
 from gym import error, logger
-from gym.envs.registration import (
+from gym.envs.registration import (  # noqa: F401
     EnvSpec,
     _check_spec_register,
     _check_version_exists,
@@ -86,7 +86,7 @@ def make(
     new_step_api: bool = False,
     disable_env_checker: Optional[bool] = None,
     **kwargs: Any,
-) -> "MTEnv":  # type: ignore[name-defined]
+) -> "MTEnv":  # type: ignore[name-defined] # noqa: F821
     """Create an environment according to the given ID.
 
     Args:
