@@ -6,7 +6,7 @@ import numpy as np
 TaskObsType = Union[str, int, float, np.ndarray]
 ActionType = Union[str, int, float, np.ndarray]
 EnvObsType = Union[np.ndarray]
-ObsType = Dict[str, Union[EnvObsType, TaskObsType]]
+ObsType = Dict[str, Union[EnvObsType, TaskObsType]]  # type: ignore[type-arg]
 RewardType = float
 DoneType = bool
 InfoType = Dict[str, Any]

@@ -65,10 +65,29 @@ class MTEnv(Env):  # type: ignore[type-arg]
             }
         )
 
-        self.np_random_env: Optional[RandomState] = None
-        self.np_random_task: Optional[RandomState] = None
-
         self._task_obs: TaskObsType
+
+    @property
+    def np_random_env(self) -> RandomNumberGenerator:
+        """Returns the environment's internal :attr:`_np_random` that if not set will initialise with a random seed."""
+        if self._np_random_env is None:
+            self._np_random_env, _ = seeding.np_random(seed=None)
+        return self._np_random_env
+
+    @np_random_env.setter
+    def np_random_env(self, value: RandomNumberGenerator) -> None:
+        self._np_random_env = value
+
+    @property
+    def np_random_task(self) -> RandomNumberGenerator:
+        """Returns the environment's internal :attr:`_np_random` that if not set will initialise with a random seed."""
+        if self._np_random_task is None:
+            self._np_random_task, _ = seeding.np_random(seed=None)
+        return self._np_random_task
+
+    @np_random_task.setter
+    def np_random_task(self, value: RandomNumberGenerator) -> None:
+        self._np_random_task = value
 
     @abstractmethod
     def step(self, action: ActionType) -> StepReturnType:

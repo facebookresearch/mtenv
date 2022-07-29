@@ -28,11 +28,9 @@ from gym.wrappers import (
 )
 from gym.wrappers.env_checker import PassiveEnvChecker
 
-from mtenv.core import MTEnv
-
 
 @dataclass
-class MultitaskEnvSpec(EnvSpec):  # type: ignore[misc]
+class MultitaskEnvSpec(EnvSpec):
 
     test_kwargs: dict = field(default_factory=dict)
 
@@ -86,7 +84,7 @@ def make(
     new_step_api: bool = False,
     disable_env_checker: Optional[bool] = None,
     **kwargs,
-) -> MTEnv:
+) -> "MTEnv":
     """Create an environment according to the given ID.
 
     Args:
