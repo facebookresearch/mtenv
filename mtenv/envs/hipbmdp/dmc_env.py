@@ -3,7 +3,7 @@ from typing import Any, Dict
 
 import gym
 from gym.core import Env
-from gym.envs.registration import register
+from gym.envs.registration import register, registry
 
 from mtenv.envs.hipbmdp.wrappers import framestack, sticky_observation
 
@@ -35,7 +35,7 @@ def _build_env(
     # shorten episode length
     max_episode_steps = (episode_length + frame_skip - 1) // frame_skip
 
-    if env_id not in gym.envs.registry.env_specs:
+    if env_id not in registry:
         register(
             id=env_id,
             entry_point="mtenv.envs.hipbmdp.wrappers.dmc_wrapper:DMCWrapper",
@@ -107,7 +107,7 @@ def build_dmc_env(
     if from_pixels:
         env = framestack.FrameStack(env, k=frame_stack)
     if sticky_observation_cfg and sticky_observation_cfg["should_use"]:
-        env = sticky_observation.StickyObservation(
+        env = sticky_observation.StickyObservation(  # type: ignore[attr-defined]
             env=env,
             sticky_probability=sticky_observation_cfg["sticky_probability"],
             last_k=sticky_observation_cfg["last_k"],

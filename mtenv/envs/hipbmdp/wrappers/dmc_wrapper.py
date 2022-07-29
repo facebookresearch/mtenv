@@ -15,7 +15,7 @@ class DMCWrapper(BaseDMCWrapper):
         self,
         domain_name: str,
         task_name: str,
-        task_kwargs: Any = None,
+        task_kwargs: Dict[str, Any],
         visualize_reward: Optional[Dict[str, Any]] = None,
         from_pixels: bool = False,
         height=84,
@@ -77,4 +77,6 @@ class DMCWrapper(BaseDMCWrapper):
         self.current_state = None
 
         # set seed
+        assert task_kwargs is not None
+        assert "random" in task_kwargs
         self.seed(seed=task_kwargs["random"])

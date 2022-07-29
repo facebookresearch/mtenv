@@ -115,7 +115,9 @@ if __name__ == "__main__":
     env.reset_task_state()
     obs = env.reset()
     done = False
+    action_space = env.action_space
+    assert isinstance(action_space, spaces.Discrete)
     while not done:
-        action = np.random.randint(env.action_space.n)
+        action = np.random.randint(action_space.n)
         obs, rew, done, _ = env.step(action)
         print(obs["env_obs"])

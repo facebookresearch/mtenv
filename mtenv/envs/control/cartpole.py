@@ -198,7 +198,7 @@ if __name__ == "__main__":
     print(obs)
     done = False
     action_space = env.action_space
-    assert isinstance(action_space, spaces.Box)
+    assert isinstance(action_space, spaces.Discrete)
     while not done:
         obs, rew, done, _ = env.step(np.random.randint(action_space.n))
         print(obs)

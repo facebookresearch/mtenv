@@ -1,5 +1,7 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+# type: ignore
 """Wrapper to enable sitcky observations for single task environments."""
+
 import random
 from collections import deque
 
