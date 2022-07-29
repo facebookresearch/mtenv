@@ -2,7 +2,7 @@
 """Wrapper to stack observations for single task environments."""
 
 from collections import deque
-from typing import Any, Dict, Tuple
+from typing import Any, Dict
 
 import gym
 import numpy as np
