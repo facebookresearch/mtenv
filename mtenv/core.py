@@ -159,8 +159,8 @@ class MTEnv(Env):  # type: ignore[type-arg]
         """
         assert self.np_random_task is not None, "please call `seed_task()` first"
 
-    def reset(
-        self,  # type: ignore[return, override]
+    def reset(  # type: ignore[return, override]
+        self,
         *,
         env_seed: Optional[int] = None,
         task_seed: Optional[int] = None,
