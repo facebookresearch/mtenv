@@ -1,10 +1,21 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 """Wrapper to fix the number of tasks in an existing multitask environment."""
 
-from typing import List
+from typing import Any, Dict, List, Optional
+
+from gym.core import Env
+from gym.spaces.space import Space
 
 from mtenv import MTEnv
-from mtenv.utils.types import TaskStateType
+from mtenv.utils import seeding
+from mtenv.utils.types import (
+    ActionType,
+    EnvObsType,
+    ObsType,
+    StepReturnType,
+    TaskObsType,
+    TaskStateType,
+)
 from mtenv.wrappers.multitask import MultiTask
 
 
@@ -46,7 +57,7 @@ class NTasks(MultiTask):
 
         # The assert statement (at the start of the function) ensures that self.np_random_task
         # is not None. Mypy is raising the warning incorrectly.
-        id_task = self.np_random_task.randint(self.n_tasks)  # type: ignore[union-attr]
+        id_task = self.np_random_task.randint(self.n_tasks)  # type: ignore[no-untyped-call]
         return self.tasks[id_task]
 
     def reset_task_state(self) -> None:
