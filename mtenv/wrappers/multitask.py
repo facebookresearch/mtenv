@@ -3,8 +3,6 @@
 
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-from gym.utils.seeding import RandomNumberGenerator
-
 from mtenv import MTEnv
 from mtenv.utils import seeding
 from mtenv.utils.types import (

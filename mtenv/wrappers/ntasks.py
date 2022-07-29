@@ -1,21 +1,10 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 """Wrapper to fix the number of tasks in an existing multitask environment."""
 
-from typing import Any, Dict, List, Optional
-
-from gym.core import Env
-from gym.spaces.space import Space
+from typing import List
 
 from mtenv import MTEnv
-from mtenv.utils import seeding
-from mtenv.utils.types import (
-    ActionType,
-    EnvObsType,
-    ObsType,
-    StepReturnType,
-    TaskObsType,
-    TaskStateType,
-)
+from mtenv.utils.types import TaskStateType
 from mtenv.wrappers.multitask import MultiTask
 
 

@@ -20,7 +20,7 @@ class MTCartPole(MTEnv):
     (see the self._mu_to_vars function)
     """
 
-    metadata = {"render.modes": ["human", "rgb_array"], "video.frames_per_second": 50}
+    metadata = {"render.modes": ["human", "rgb_array"], "video.frames_per_second": 50}  # type: ignore[dict-item]
 
     def _mu_to_vars(self, mu):
         self.gravity = 9.8 + mu[0] * 5
@@ -197,6 +197,8 @@ if __name__ == "__main__":
     obs = env.reset()
     print(obs)
     done = False
+    action_space = env.action_space
+    assert isinstance(action_space, spaces.Box)
     while not done:
-        obs, rew, done, _ = env.step(np.random.randint(env.action_space.n))
+        obs, rew, done, _ = env.step(np.random.randint(action_space.n))
         print(obs)

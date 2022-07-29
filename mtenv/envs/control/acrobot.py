@@ -32,7 +32,7 @@ class MTAcrobot(MTEnv):
 
     """
 
-    metadata = {"render.modes": ["human", "rgb_array"], "video.frames_per_second": 15}
+    metadata = {"render.modes": ["human", "rgb_array"], "video.frames_per_second": 15}  # type: ignore[dict-item]
 
     dt = 0.2
 
@@ -325,6 +325,8 @@ if __name__ == "__main__":
     obs = env.reset()
     print(obs)
     done = False
+    action_space = env.action_space
+    assert isinstance(action_space, spaces.Box)
     while not done:
-        obs, rew, done, _ = env.step(np.random.randint(env.action_space.n))
+        obs, rew, done, _ = env.step(np.random.randint(action_space.n))
         print(obs)
