@@ -2,7 +2,7 @@
 """Wrapper to fix the number of tasks in an existing multitask environment
 and return the id of the task as part of the observation."""
 
-from typing import Any, Dict
+from typing import Any
 
 from gym.spaces import Dict as DictSpace
 from gym.spaces import Discrete
@@ -53,7 +53,7 @@ class NTasksId(NTasks):
         self.env.set_task_state(self.tasks[task_state])
         self.task_state = task_state
 
-    def reset(self, **kwargs: Dict[str, Any]) -> ObsType:  # type: ignore[override]
+    def reset(self, **kwargs: Any) -> ObsType:  # type: ignore[override]
         obs = self.env.reset(**kwargs)  # type: ignore[arg-type]
         return self._update_obs(obs)  # type: ignore[arg-type]
 

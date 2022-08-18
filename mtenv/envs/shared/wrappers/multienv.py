@@ -2,7 +2,7 @@
 """Wrapper to (lazily) construct a multitask environment from a list of
     constructors (list of functions to construct the environments)."""
 
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Callable, List, Optional
 
 from gym.core import Env
 from gym.spaces.discrete import Discrete as DiscreteSpace
@@ -76,7 +76,7 @@ class MultiEnvWrapper(MTEnv):
     def assert_task_seed_is_set(self) -> None:
         assert self.np_random_task is not None, "please call `seed_task()` first"
 
-    def reset(self, **kwargs: Dict[str, Any]) -> ObsType:  # type: ignore[override]
+    def reset(self, **kwargs: Any) -> ObsType:  # type: ignore[override]
         return self._make_observation(env_obs=self.env.reset(**kwargs))  # type: ignore[arg-type]
 
     def sample_task_state(self) -> TaskStateType:

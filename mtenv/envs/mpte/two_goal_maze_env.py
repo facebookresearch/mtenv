@@ -43,7 +43,7 @@ class MTMiniWorldEnv(EnvToMTEnv):
     def sample_task_state(self) -> TaskStateType:
         return self.env.sample_task_state()
 
-    def reset(self, **kwargs: Dict[str, Any]) -> ObsType:  # type: ignore[override]
+    def reset(self, **kwargs: Any) -> ObsType:  # type: ignore[override]
         # signature is incompatible with supertype.
         self.assert_env_seed_is_set()
         return self.env.reset(**kwargs)

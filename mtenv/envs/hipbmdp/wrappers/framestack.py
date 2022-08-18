@@ -2,7 +2,7 @@
 """Wrapper to stack observations for single task environments."""
 
 from collections import deque
-from typing import Any, Dict
+from typing import Any
 
 import gym
 import numpy as np
@@ -34,7 +34,7 @@ class FrameStack(gym.Wrapper):  # type: ignore[type-arg]
         )
         self._max_episode_steps = env._max_episode_steps  # type: ignore[attr-defined]
 
-    def reset(self, **kwargs: Dict[str, Any]) -> np.ndarray:  # type: ignore[override]
+    def reset(self, **kwargs: Any) -> np.ndarray:  # type: ignore[override]
         obs = self.env.reset(**kwargs)  # type: ignore[arg-type]
         for _ in range(self._k):
             self._frames.append(obs)

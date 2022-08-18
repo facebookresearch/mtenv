@@ -1,6 +1,6 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 """Wrapper to convert an environment into multitask environment."""
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 
 from gym.core import Env
 from gym.spaces.space import Space
@@ -60,7 +60,7 @@ class EnvToMTEnv(MTEnv):
     def sample_task_state(self) -> TaskStateType:
         raise NotImplementedError
 
-    def reset(self, **kwargs: Dict[str, Any]) -> ObsType:  # type: ignore[override]
+    def reset(self, **kwargs: Any) -> ObsType:  # type: ignore[override]
         self.assert_env_seed_is_set()
         env_obs = self.env.reset(**kwargs)  # type: ignore[arg-type]
         return self._make_observation(env_obs=env_obs)  # type: ignore[arg-type]
@@ -82,7 +82,7 @@ class EnvToMTEnv(MTEnv):
             return [seed] + env_seeds
         return [seed]
 
-    def render(self, mode: str = "human", **kwargs: Dict[str, Any]) -> Any:
+    def render(self, mode: str = "human", **kwargs: Any) -> Any:
         """Renders the environment."""
         return self.env.render(mode, **kwargs)
 

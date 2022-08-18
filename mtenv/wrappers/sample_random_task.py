@@ -1,7 +1,7 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 """Wrapper that samples a new task everytime the environment is reset."""
 
-from typing import Any, Dict, Tuple, Union
+from typing import Any, Tuple, Union
 
 from mtenv import MTEnv
 from mtenv.utils.types import InfoType, ObsType
@@ -19,6 +19,6 @@ class SampleRandomTask(MultiTask):
 
         super().__init__(env=env)
 
-    def reset(self, **kwargs: Dict[str, Any]) -> Union[ObsType, Tuple[ObsType, InfoType]]:  # type: ignore[override]
+    def reset(self, **kwargs: Any) -> Union[ObsType, Tuple[ObsType, InfoType]]:  # type: ignore[override]
         self.env.reset_task_state(**kwargs)
         return self.env.reset()
