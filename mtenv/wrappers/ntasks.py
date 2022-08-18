@@ -46,7 +46,7 @@ class NTasks(MultiTask):
 
         # The assert statement (at the start of the function) ensures that self.np_random_task
         # is not None. Mypy is raising the warning incorrectly.
-        id_task = self.np_random_task.randint(self.n_tasks)  # type: ignore[union-attr]
+        id_task = self.np_random_task.randint(self.n_tasks)  # type: ignore[no-untyped-call]
         return self.tasks[id_task]
 
     def reset_task_state(self) -> None:

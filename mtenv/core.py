@@ -1,16 +1,18 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 """Core API of MultiTask Environments for Reinforcement Learning."""
-from abc import ABC, abstractmethod
-from typing import List, Optional
+from abc import abstractmethod
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 from gym.core import Env
 from gym.spaces.dict import Dict as DictSpace
 from gym.spaces.space import Space
-from numpy.random import RandomState
+from gym.utils.seeding import RandomNumberGenerator
 
+from mtenv.envs.registration import MultitaskEnvSpec
 from mtenv.utils import seeding
 from mtenv.utils.types import (
     ActionType,
+    InfoType,
     ObsType,
     StepReturnType,
     TaskObsType,
@@ -18,12 +20,17 @@ from mtenv.utils.types import (
 )
 
 
-class MTEnv(Env, ABC):  # type: ignore[misc]
+class MTEnv(Env):  # type: ignore[type-arg]
+
+    spec: MultitaskEnvSpec
+    _np_random_env: Optional[RandomNumberGenerator] = None
+    _np_random_task: Optional[RandomNumberGenerator] = None
+
     def __init__(
         self,
-        action_space: Space,
-        env_observation_space: Space,
-        task_observation_space: Space,
+        action_space: Space,  # type: ignore[type-arg]
+        env_observation_space: Space,  # type: ignore[type-arg]
+        task_observation_space: Space,  # type: ignore[type-arg]
     ) -> None:
         """Main class for multitask RL Environments.
 
@@ -58,10 +65,29 @@ class MTEnv(Env, ABC):  # type: ignore[misc]
             }
         )
 
-        self.np_random_env: Optional[RandomState] = None
-        self.np_random_task: Optional[RandomState] = None
-
         self._task_obs: TaskObsType
+
+    @property
+    def np_random_env(self) -> RandomNumberGenerator:
+        """Returns the environment's internal :attr:`_np_random` that if not set will initialise with a random seed."""
+        if self._np_random_env is None:
+            self._np_random_env, _ = seeding.np_random(seed=None)
+        return self._np_random_env
+
+    @np_random_env.setter
+    def np_random_env(self, value: RandomNumberGenerator) -> None:
+        self._np_random_env = value
+
+    @property
+    def np_random_task(self) -> RandomNumberGenerator:
+        """Returns the environment's internal :attr:`_np_random` that if not set will initialise with a random seed."""
+        if self._np_random_task is None:
+            self._np_random_task, _ = seeding.np_random(seed=None)
+        return self._np_random_task
+
+    @np_random_task.setter
+    def np_random_task(self, value: RandomNumberGenerator) -> None:
+        self._np_random_task = value
 
     @abstractmethod
     def step(self, action: ActionType) -> StepReturnType:
@@ -133,8 +159,14 @@ class MTEnv(Env, ABC):  # type: ignore[misc]
         """
         assert self.np_random_task is not None, "please call `seed_task()` first"
 
-    @abstractmethod
-    def reset(self) -> ObsType:
+    def reset(  # type: ignore[return, override]
+        self,
+        *,
+        env_seed: Optional[int] = None,
+        task_seed: Optional[int] = None,
+        return_info: bool = False,
+        options: Optional[Dict[str, Any]] = None,
+    ) -> Union[ObsType, Tuple[ObsType, InfoType]]:
         """Reset the environment to some initial state and return the
         observation in the new state.
 
@@ -147,7 +179,10 @@ class MTEnv(Env, ABC):  # type: ignore[misc]
             ObsType: For more information on `multitask observation`
             returned by the environment, refer :ref:`multitask_observation`.
         """
-        pass
+        if env_seed is not None:
+            self.np_random_env, env_seed = seeding.np_random(env_seed)
+        if task_seed is not None:
+            self.np_random_task, task_seed = seeding.np_random(task_seed)
 
     @abstractmethod
     def sample_task_state(self) -> TaskStateType:

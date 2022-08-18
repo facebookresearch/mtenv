@@ -1,5 +1,5 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 
 import numpy as np
 from gym import spaces
@@ -32,7 +32,7 @@ class FiniteMTBanditEnv(MTEnv):
         # everytime we instantiate the env, we get the same `possible_task_observations`.
         self._should_reset_env = True
 
-    def reset(self, **kwargs: Dict[str, Any]) -> ObsType:
+    def reset(self, **kwargs: Any) -> ObsType:
         self.assert_env_seed_is_set()
         self._should_reset_env = False
         return {"env_obs": [0.0], "task_obs": self.task_obs}

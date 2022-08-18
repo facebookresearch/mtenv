@@ -2,7 +2,7 @@
 """Wrapper to (lazily) construct a multitask environment from a list of
     constructors (list of functions to construct the environments)."""
 
-from typing import Callable, List, Optional
+from typing import Any, Callable, List, Optional
 
 from gym.core import Env
 from gym.spaces.discrete import Discrete as DiscreteSpace
@@ -41,8 +41,8 @@ class MultiEnvWrapper(MTEnv):
         self._num_tasks = len(funcs_to_make_envs)
         self._funcs_to_make_envs = funcs_to_make_envs
         self._envs = [None for _ in range(self._num_tasks)]
-        self._envs[initial_task_state] = funcs_to_make_envs[initial_task_state]()
-        self.env: Env = self._envs[initial_task_state]
+        self._envs[initial_task_state] = funcs_to_make_envs[initial_task_state]()  # type: ignore[call-overload]
+        self.env: Env = self._envs[initial_task_state]  # type: ignore[assignment]
         super().__init__(
             action_space=self.env.action_space,
             env_observation_space=self.env.observation_space,
@@ -57,8 +57,8 @@ class MultiEnvWrapper(MTEnv):
         }
 
     def step(self, action: ActionType) -> StepReturnType:
-        env_obs, reward, done, info = self.env.step(action)
-        return self._make_observation(env_obs=env_obs), reward, done, info
+        env_obs, *reward_done_info = self.env.step(action)
+        return self._make_observation(env_obs=env_obs), *reward_done_info  # type: ignore[return-value]
 
     def get_task_state(self) -> TaskStateType:
         return self.task_obs
@@ -66,8 +66,8 @@ class MultiEnvWrapper(MTEnv):
     def set_task_state(self, task_state: TaskStateType) -> None:
         self.task_obs = task_state
         if self._envs[task_state] is None:
-            self._envs[task_state] = self._funcs_to_make_envs[task_state]()
-        self.env = self._envs[task_state]
+            self._envs[task_state] = self._funcs_to_make_envs[task_state]()  # type: ignore[call-overload]
+        self.env = self._envs[task_state]  # type: ignore[assignment]
 
     def assert_env_seed_is_set(self) -> None:
         """The seed is set during the call to the constructor of self.env"""
@@ -76,12 +76,12 @@ class MultiEnvWrapper(MTEnv):
     def assert_task_seed_is_set(self) -> None:
         assert self.np_random_task is not None, "please call `seed_task()` first"
 
-    def reset(self) -> ObsType:
-        return self._make_observation(env_obs=self.env.reset())
+    def reset(self, **kwargs: Any) -> ObsType:  # type: ignore[override]
+        return self._make_observation(env_obs=self.env.reset(**kwargs))  # type: ignore[arg-type]
 
     def sample_task_state(self) -> TaskStateType:
         self.assert_task_seed_is_set()
-        task_state = self.np_random_task.randint(self._num_tasks)  # type: ignore[union-attr]
+        task_state = self.np_random_task.randint(self._num_tasks)  # type: ignore[no-untyped-call]
         # The assert statement (at the start of the function) ensures that self.np_random_task
         # is not None. Mypy is raising the warning incorrectly.
         assert isinstance(task_state, int)

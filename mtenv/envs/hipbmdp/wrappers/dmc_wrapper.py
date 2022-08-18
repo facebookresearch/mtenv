@@ -15,7 +15,7 @@ class DMCWrapper(BaseDMCWrapper):
         self,
         domain_name: str,
         task_name: str,
-        task_kwargs: Any = None,
+        task_kwargs: Dict[str, Any],
         visualize_reward: Optional[Dict[str, Any]] = None,
         from_pixels: bool = False,
         height=84,
@@ -32,7 +32,7 @@ class DMCWrapper(BaseDMCWrapper):
         `dm_control_suite`.
         """
         assert (
-            "random" in task_kwargs  # type: ignore [operator]
+            "random" in task_kwargs
         ), "please specify a seed, for deterministic behaviour"
         self._from_pixels = from_pixels
         self._height = height
@@ -77,4 +77,6 @@ class DMCWrapper(BaseDMCWrapper):
         self.current_state = None
 
         # set seed
-        self.seed(seed=task_kwargs["random"])  # type: ignore [index]
+        assert task_kwargs is not None
+        assert "random" in task_kwargs
+        self.seed(seed=task_kwargs["random"])

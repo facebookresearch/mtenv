@@ -1,6 +1,6 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 """Wrapper to convert an environment into multitask environment."""
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 
 from gym.core import Env
 from gym.spaces.space import Space
@@ -18,7 +18,7 @@ from mtenv.utils.types import (
 
 
 class EnvToMTEnv(MTEnv):
-    def __init__(self, env: Env, task_observation_space: Space) -> None:
+    def __init__(self, env: Env, task_observation_space: Space) -> None:  # type: ignore[type-arg]
         """Wrapper to convert an environment into a multitak environment.
 
         Args:
@@ -38,14 +38,14 @@ class EnvToMTEnv(MTEnv):
         self.metadata = self.env.metadata
 
     @property
-    def spec(self) -> Any:
+    def spec(self) -> Any:  # type: ignore[override]
         return self.env.spec
 
     @classmethod
     def class_name(cls) -> str:
         return cls.__name__
 
-    def _make_observation(self, env_obs: EnvObsType) -> ObsType:
+    def _make_observation(self, env_obs: EnvObsType) -> ObsType:  # type: ignore[type-arg]
         return {"env_obs": env_obs, "task_obs": self.get_task_obs()}
 
     def get_task_obs(self) -> TaskObsType:
@@ -60,36 +60,34 @@ class EnvToMTEnv(MTEnv):
     def sample_task_state(self) -> TaskStateType:
         raise NotImplementedError
 
-    def reset(self, **kwargs: Dict[str, Any]) -> ObsType:
+    def reset(self, **kwargs: Any) -> ObsType:  # type: ignore[override]
         self.assert_env_seed_is_set()
-        env_obs = self.env.reset(**kwargs)
-        return self._make_observation(env_obs=env_obs)
+        env_obs = self.env.reset(**kwargs)  # type: ignore[arg-type]
+        return self._make_observation(env_obs=env_obs)  # type: ignore[arg-type]
 
     def reset_task_state(self) -> None:
         self.set_task_state(task_state=self.sample_task_state())
 
     def step(self, action: ActionType) -> StepReturnType:
-        env_obs, reward, done, info = self.env.step(action)
-        return (
+        env_obs, *reward_done_info = self.env.step(action)
+        return (  # type: ignore[return-value]
             self._make_observation(env_obs=env_obs),
-            reward,
-            done,
-            info,
+            *reward_done_info,
         )
 
     def seed(self, seed: Optional[int] = None) -> List[int]:
         self.np_random_env, seed = seeding.np_random(seed)
-        env_seeds = self.env.seed(seed)
+        env_seeds = self.env.seed(seed)  # type: ignore[no-untyped-call]
         if isinstance(env_seeds, list):
             return [seed] + env_seeds
         return [seed]
 
-    def render(self, mode: str = "human", **kwargs: Dict[str, Any]) -> Any:
+    def render(self, mode: str = "human", **kwargs: Any) -> Any:
         """Renders the environment."""
         return self.env.render(mode, **kwargs)
 
     def close(self) -> Any:
-        return self.env.close()
+        return self.env.close()  # type: ignore[no-untyped-call]
 
     def __str__(self) -> str:
         return f"{type(self).__name__}{self.env}"
@@ -98,7 +96,7 @@ class EnvToMTEnv(MTEnv):
         return str(self)
 
     @property
-    def unwrapped(self) -> Env:
+    def unwrapped(self) -> Env:  # type: ignore[type-arg]
         return self.env.unwrapped
 
     def __getattr__(self, name: str) -> Any:

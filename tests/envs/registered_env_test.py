@@ -6,9 +6,10 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 import pytest
+from gym.envs.registration import registry
 
 from mtenv import make
-from mtenv.envs.registration import MultitaskEnvSpec, mtenv_registry
+from mtenv.envs.registration import MultitaskEnvSpec
 from tests.utils.utils import validate_mtenv
 
 ConfigType = Dict[str, Any]
@@ -18,12 +19,16 @@ def get_env_spec() -> List[Dict[str, MultitaskEnvSpec]]:
     mtenv_env_path = os.environ.get("NOX_MTENV_ENV_PATH", "")
     if mtenv_env_path == "":
         # test all envs
-        return mtenv_registry.env_specs.items()
+        return [
+            (name, spec)
+            for (name, spec) in registry.items()
+            if isinstance(spec, MultitaskEnvSpec)
+        ]
     else:
         # test only those environments which are on NOX_MTENV_ENV_PATH
 
         mtenv_env_path = str(Path(mtenv_env_path).resolve())
-        env_specs = deepcopy(mtenv_registry.env_specs)
+        env_specs = deepcopy(registry)
         for key in list(env_specs.keys()):
             entry_point = env_specs[key].entry_point.split(":")[0].replace(".", "/")
             if mtenv_env_path not in str(Path(entry_point).resolve()):

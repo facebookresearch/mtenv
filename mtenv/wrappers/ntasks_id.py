@@ -2,6 +2,8 @@
 """Wrapper to fix the number of tasks in an existing multitask environment
 and return the id of the task as part of the observation."""
 
+from typing import Any
+
 from gym.spaces import Dict as DictSpace
 from gym.spaces import Discrete
 
@@ -51,9 +53,9 @@ class NTasksId(NTasks):
         self.env.set_task_state(self.tasks[task_state])
         self.task_state = task_state
 
-    def reset(self) -> ObsType:
-        obs = self.env.reset()
-        return self._update_obs(obs)
+    def reset(self, **kwargs: Any) -> ObsType:  # type: ignore[override]
+        obs = self.env.reset(**kwargs)  # type: ignore[arg-type]
+        return self._update_obs(obs)  # type: ignore[arg-type]
 
     def sample_task_state(self) -> TaskStateType:
         self.assert_task_seed_is_set()
@@ -63,5 +65,5 @@ class NTasksId(NTasks):
 
         # The assert statement (at the start of the function) ensures that self.np_random_task
         # is not None. Mypy is raising the warning incorrectly.
-        id_task = self.np_random_task.randint(self.n_tasks)  # type: ignore[union-attr]
+        id_task = self.np_random_task.randint(self.n_tasks)  # type: ignore[no-untyped-call]
         return id_task

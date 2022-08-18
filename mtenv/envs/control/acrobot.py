@@ -32,7 +32,7 @@ class MTAcrobot(MTEnv):
 
     """
 
-    metadata = {"render.modes": ["human", "rgb_array"], "video.frames_per_second": 15}
+    metadata = {"render.modes": ["human", "rgb_array"], "video.frames_per_second": 15}  # type: ignore[dict-item]
 
     dt = 0.2
 
@@ -155,15 +155,15 @@ class MTAcrobot(MTEnv):
         dtheta1 = s[2]
         dtheta2 = s[3]
         d1 = (
-            m1 * lc1 ** 2
-            + m2 * (l1 ** 2 + lc2 ** 2 + 2 * l1 * lc2 * cos(theta2))
+            m1 * lc1**2
+            + m2 * (l1**2 + lc2**2 + 2 * l1 * lc2 * cos(theta2))
             + I1
             + I2
         )
-        d2 = m2 * (lc2 ** 2 + l1 * lc2 * cos(theta2)) + I2
+        d2 = m2 * (lc2**2 + l1 * lc2 * cos(theta2)) + I2
         phi2 = m2 * lc2 * g * cos(theta1 + theta2 - pi / 2.0)
         phi1 = (
-            -m2 * l1 * lc2 * dtheta2 ** 2 * sin(theta2)
+            -m2 * l1 * lc2 * dtheta2**2 * sin(theta2)
             - 2 * m2 * l1 * lc2 * dtheta2 * dtheta1 * sin(theta2)
             + (m1 * lc1 + m2 * l1) * g * cos(theta1 - pi / 2)
             + phi2
@@ -171,13 +171,13 @@ class MTAcrobot(MTEnv):
         if self.book_or_nips == "nips":
             # the following line is consistent with the description in the
             # paper
-            ddtheta2 = (a + d2 / d1 * phi1 - phi2) / (m2 * lc2 ** 2 + I2 - d2 ** 2 / d1)
+            ddtheta2 = (a + d2 / d1 * phi1 - phi2) / (m2 * lc2**2 + I2 - d2**2 / d1)
         else:
             # the following line is consistent with the java implementation and the
             # book
             ddtheta2 = (
-                a + d2 / d1 * phi1 - m2 * l1 * lc2 * dtheta1 ** 2 * sin(theta2) - phi2
-            ) / (m2 * lc2 ** 2 + I2 - d2 ** 2 / d1)
+                a + d2 / d1 * phi1 - m2 * l1 * lc2 * dtheta1**2 * sin(theta2) - phi2
+            ) / (m2 * lc2**2 + I2 - d2**2 / d1)
         ddtheta1 = -(d2 * ddtheta2 + phi1) / d1
         return (dtheta1, dtheta2, ddtheta1, ddtheta2, 0.0)
 
@@ -325,6 +325,8 @@ if __name__ == "__main__":
     obs = env.reset()
     print(obs)
     done = False
+    action_space = env.action_space
+    assert isinstance(action_space, spaces.Discrete)
     while not done:
-        obs, rew, done, _ = env.step(np.random.randint(env.action_space.n))
+        obs, rew, done, _ = env.step(np.random.randint(action_space.n))
         print(obs)

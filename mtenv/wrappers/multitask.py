@@ -1,14 +1,13 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 """Wrapper to change the behaviour of an existing multitask environment."""
 
-from typing import List, Optional
-
-from numpy.random import RandomState
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 from mtenv import MTEnv
 from mtenv.utils import seeding
 from mtenv.utils.types import (
     ActionType,
+    InfoType,
     ObsType,
     StepReturnType,
     TaskObsType,
@@ -26,8 +25,6 @@ class MultiTask(MTEnv):
         self.env = env
         self.observation_space = self.env.observation_space
         self.action_space = self.env.action_space
-        self.np_random_env: Optional[RandomState] = None
-        self.np_random_task: Optional[RandomState] = None
 
     def step(self, action: ActionType) -> StepReturnType:
         return self.env.step(action)
@@ -51,8 +48,20 @@ class MultiTask(MTEnv):
         assert self.np_random_task is not None, "please call `seed_task()` first"
         self.env.assert_task_seed_is_set()
 
-    def reset(self) -> ObsType:
-        return self.env.reset()
+    def reset(  # type: ignore[override]
+        self,
+        *,
+        env_seed: Optional[int] = None,
+        task_seed: Optional[int] = None,
+        return_info: bool = False,
+        options: Optional[Dict[str, Any]] = None,
+    ) -> Union[ObsType, Tuple[ObsType, InfoType]]:
+        return self.env.reset(
+            env_seed=env_seed,
+            task_seed=task_seed,
+            return_info=return_info,
+            options=options,
+        )
 
     def sample_task_state(self) -> TaskStateType:
         return self.env.sample_task_state()
